@@ -1,0 +1,28 @@
+.signup{
+    display: flex;
+    height: 100vh;
+}
+
+.signup-wp-container{
+    background-color: black;
+    flex:0.5;
+}
+
+.signup-form-container{
+    flex:0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-form{
+    background-color: #ffffff;
+    padding:2rem;
+    border-radius: 20px;
+}
+
+.form-unit{
+    display: flex;
+    flex-direction: column;
+    padding:10px;
+}

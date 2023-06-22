@@ -1,0 +1,28 @@
+.login-page{
+    display: flex;
+    height: 100vh;
+}
+
+.login-wp-container{
+    background-color: black;
+    flex:0.5;
+}
+
+.login-form-container{
+    flex:0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form{
+    background-color: #ffffff;
+    padding:2rem;
+    border-radius: 20px;
+}
+
+.login-unit{
+    display: flex;
+    flex-direction: column;
+    padding:10px;
+}
