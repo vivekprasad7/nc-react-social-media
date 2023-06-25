@@ -26,3 +26,12 @@
     flex-direction: column;
     padding:10px;
 }
+
+.login-pwd-input{
+    position: relative;
+}
+
+
+.pwd-eye{
+    position: absolute;
+}
