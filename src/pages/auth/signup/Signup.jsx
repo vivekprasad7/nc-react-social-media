@@ -1,18 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Signup.css"
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../../../contexts/authContext';
 
 export const Signup = () => {
 
-    const userDetails = {
-        firstName: "Arya",
-        lastName:"Shah",
-        email:"aryashah@gmail.com",
-        userName:"aryashah",
-        password:"aryashah",
-        confirmPassword:"aryashah"
+    const [ isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+    const navigate = useNavigate();
+    const {signupHandler} = useAuthContext();
+
+    const [ signupDetails, setSignupDetails] = useState({
+        firstName:"",
+        lastName:"",
+        email:"",
+        username:"",
+        password:"",
+        avatarImg:""
+    })
+
+    const signupSubmitHandler = (e) => {
+        e.preventDefault();
+        signupHandler(signupDetails)
     }
 
-    const {firstName, lastName, email, userName, password, confirmPassword, } = userDetails;
+
+
+    // const userDetails = {
+    //     firstName: "Arya",
+    //     lastName:"Shah",
+    //     email:"aryashah@gmail.com",
+    //     userName:"aryashah",
+    //     password:"aryashah",
+    //     confirmPassword:"aryashah"
+    // }
+
+    // const {firstName, lastName, email, userName, password, confirmPassword, } = userDetails;
   return (
     <div className='signup'>
         <div className='signup-wp-container'>
@@ -20,31 +43,98 @@ export const Signup = () => {
         </div>
         <div className='signup-form-container'>
             
-            <div className='signup-form'>
+            <form onSubmit={signupSubmitHandler} className='signup-form'>
                 <div className='form-flex-display'>
                 <div className='form-unit'>
-                    <label>First Name: <input id="firstName" value={firstName}  placeholder='Arya' /></label>
+                    <label>First Name: <input 
+                    required
+                    id="firstName" 
+                    value={signupDetails.firstName}  
+                    placeholder='Arya' 
+                    name="firstName"
+                    onChange={(e) => 
+                    setSignupDetails({...signupDetails, firstName: e.target.value})
+                    }
+                    
+                    /></label>
                 </div>
                 <div className='form-unit'>
-                    <label>Last Name: <input id="lastName" value={lastName}  placeholder='Shah' /></label>
+                <label>Last Name: <input 
+                    required
+                    id="lastName" 
+                    value={signupDetails.lastName}  
+                    placeholder='Shah' 
+                    name="lastName"
+                    onChange={(e) => 
+                    setSignupDetails({...signupDetails, lastName: e.target.value})
+                    }
+                    
+                    /></label>
                 </div>
                 </div>
 
                 <div className='form-block-display'>
                 <div className='form-unit'>
-                    <label>Username: <input id="userName" value={userName}  placeholder='aryashah' /></label>
+                <label>Email: <input 
+                    required
+                    id="email" 
+                    value={signupDetails.email}  
+                    placeholder='aryashah@gmail.com' 
+                    name="email"
+                    onChange={(e) => 
+                    setSignupDetails({...signupDetails, email: e.target.value})
+                    }
+                    
+                    /></label>
                 </div>
                 </div>
 
                 <div className='form-block-display'>
                 <div className='form-unit'>
-                    <label> Email: <input id="email"  value={email} placeholder='aryashah@gmail.com' /></label>
+                <label>User Name: <input 
+                    required
+                    id="username" 
+                    value={signupDetails.username}  
+                    placeholder='aryashah' 
+                    name="username"
+                    onChange={(e) => 
+                    setSignupDetails({...signupDetails, username: e.target.value})
+                    }
+        
+                    /></label>
+                   
                 </div>
                 </div>
 
                 <div className='form-block-display'>
                 <div className='form-unit'>
-                    <label>Password: <input id="password" type="password" value={password} /></label>
+                <label>Password: 
+                <input
+                className='signup-pwd-input'
+                type={isPasswordVisible ? "text" : "password"}
+                 required 
+                 id="password"
+                 placeholder={isPasswordVisible ? "password" : "********"}
+                 value={signupDetails.password}
+                 name="password"
+                 onChange={(e) => setSignupDetails({
+                  ...signupDetails,
+                  password: e.target.value,
+                 })}
+                />
+                {isPasswordVisible ? (
+              <i
+                onClick={() => setIsPasswordVisible((prev) => !prev)}
+                className="fa-regular fa-eye-slash pwd-eye"
+              ></i>
+            ) : (
+              <i
+                onClick={() => setIsPasswordVisible((prev) => !prev)}
+                className="fa-regular fa-eye pwd-eye"
+              ></i>
+            )}  
+                </label>
+
                 </div>
                 </div>
 
@@ -52,14 +142,18 @@ export const Signup = () => {
 
                 <div className='form-block-display'>
                 <div className='form-unit'>
-                    <button>Sign Up!</button>
+                    <button type="submit" value="Sign Up">Sign Up!</button>
                 </div>
                 </div>
+
+                <div className='form-block-display'>
+           <p>Already have an Account? <Link to="/login">Log In</Link></p>
+            </div>
 
 
                
 
-            </div>
+            </form>
 
         </div>
 

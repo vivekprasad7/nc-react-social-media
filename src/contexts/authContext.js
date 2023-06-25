@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useContext, useReducer, useState } from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import { authReducer } from "../reducers/authReducer";
@@ -11,11 +11,11 @@ export const AuthContextProvider = ({children}) => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const locatStorageData = JSON.parse(localStorage.getItem("data"))
+    const localStorageData = JSON.parse(localStorage.getItem("data"))
 
     const authInitialState = {
         user:{},
-        token: locatStorageData?.token || "",
+        token: localStorageData?.token || "",
     }
 
     const [authState, authDispatch] = useReducer(authReducer, authInitialState)
@@ -47,11 +47,53 @@ export const AuthContextProvider = ({children}) => {
         }
     }
 
+    const signupHandler = async (signupInput) =>{
+        try{
+            const {data, status} = await axios({
+                method:'POST',
+                data: signupInput,
+                url:"/api/auth/signup"
+            })
+            if(status === 201){
+                authDispatch({type:"SET_USER", payload: data?.createdUser});
+                authDispatch({type:"SET_TOKEN", payload: data?.encodedToken});
+                navigate(location?.state?.from?.pathname || "/")
+                localStorage.setItem(
+                    "data",
+                    JSON.stringify({user:data?.createdUser, token: data?.encodedToken})
+                );
+                toast.success(`Hi, ${data?.createdUser.firstName}!`, {
+                    icon: "👋",
+                  });
+            }
+
+
+        } catch(e){
+            console.error(e);
+            toast.error(e.response.data.errors[0]);
+        }
+    }
+
+    useEffect(()=>{
+        if(localStorageData){
+            authDispatch({type:"SET_USER", payload: localStorageData?.user});
+            authDispatch({type:"SET_TOKEN", payload:localStorageData?.encodedToken});
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
+
+    const logoutHandler = () =>{
+    authDispatch({ type: "SET_USER", payload: {} });
+    authDispatch({ type: "SET_TOKEN", payload: "" });
+    localStorage.removeItem("data");
+    toast.success("Logged Out!");
+    }
+
 
     
     
     return(
-        <AuthContext.Provider value={{loginHandler}}>
+        <AuthContext.Provider value={{loginHandler, signupHandler, logoutHandler, authState}}>
             {children}
         </AuthContext.Provider>
     )
