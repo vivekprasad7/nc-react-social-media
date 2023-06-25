@@ -1,7 +1,15 @@
 import React from 'react'
 import "./Login.css"
+import { useAuthContext } from '../../../contexts/authContext'
 
 export const Login = () => {
+
+  const {loginHandler} = useAuthContext();
+
+  const userCreds = {username:"aryashah", password:"aryashah123"};
+  
+
+
   const userDetails = {
     firstName: "Arya",
     lastName:"Shah",
@@ -22,6 +30,8 @@ const {firstName, lastName, userName, password, confirmPassword, } = userDetails
     <div className='login-form-container'>
         
         <div className='login-form'>
+
+          <h1 onClick={() => loginHandler(userCreds)}>Login </h1>
           
 
             <div className='form-block-display'>
