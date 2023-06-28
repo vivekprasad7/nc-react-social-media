@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Feed.css"
+import { ProfileCard } from '../profile-card/ProfileCard'
 
 export const Feed = () => {
   return (
@@ -17,12 +18,10 @@ export const Feed = () => {
             </ul>
                
             </div>
-            {/* <div className='trending-toggle'>
-                <h3>Trending</h3>
-                {" |"}
-                <h3>Latest</h3>
-            </div> */}
+      
         </div>
+
+        <ProfileCard/>
 
     </div>
   )
