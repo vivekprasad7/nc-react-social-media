@@ -1,4 +1,4 @@
-import { v4 as uuid } from "uuid";
+// import { v4 as uuid } from "uuid";
 import { formatDate } from "../utils/authUtils";
 /**
  * User Database can be added here.
@@ -7,7 +7,7 @@ import { formatDate } from "../utils/authUtils";
 
 export const users = [
   {
-    _id: uuid(),
+    _id: "0c489f60-3f1e-498b-ad52-9bb8c73bb069",
     firstName: "Arya",
     lastName: "Shah",
     username: "aryashah",
@@ -19,7 +19,7 @@ export const users = [
 
   },
   {
-    _id: uuid(),
+    _id: "675bc919-36f5-4cab-9d38-b3ea430533e1",
     firstName: "Joey",
     lastName: "Tribbiani",
     username: "joey",
@@ -33,7 +33,7 @@ export const users = [
     bookmarks:[],
   },
   {
-    _id: uuid(),
+    _id: "03081a87-0207-4e39-bbd8-70bc8de598b5",
     firstName: "Chandler",
     lastName: "Bing",
     username: "chandler",
@@ -47,7 +47,7 @@ export const users = [
     bookmarks:[],
   },
   {
-    _id: uuid(),
+    _id: "28795253-5970-4ef3-98a1-e0bb07178cb9",
     firstName: "Phoebe",
     lastName: "Buffay",
     username: "phoebe",
@@ -61,7 +61,7 @@ export const users = [
     bookmarks:[],
   },
   {
-    _id: uuid(),
+    _id: "a4f70207-521d-402c-af19-f4565119a8b8",
     firstName: "Ross",
     lastName: "Geller",
     username: "ross",
@@ -75,7 +75,7 @@ export const users = [
     bookmarks:[],
   },
   {
-    _id: uuid(),
+    _id: "aa4a87b7-5d50-4223-a292-d4c417e1e33e",
     firstName: "Monica",
     lastName: "Geller",
     username: "monica",
@@ -89,7 +89,7 @@ export const users = [
     bookmarks:[],
   },
   {
-    _id: uuid(),
+    _id: "85007e7a-6926-4bcd-8100-42dc55f60765",
     firstName: "Rachel",
     lastName: "Green",
     username: "rachel",
@@ -103,7 +103,7 @@ export const users = [
     bookmarks:[],
   },
   {
-    _id: uuid(),
+    _id: "8bab9d4a-0233-47ae-abe7-699cc5014863",
     firstName: "Bad",
     lastName: "Girl",
     username: "badgirl",

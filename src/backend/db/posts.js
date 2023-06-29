@@ -33,4 +33,40 @@ export const posts = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
+  {
+    _id: uuid(),
+    content: "Hello Everyone!",
+    postImg: "https://cataas.com/cat/cute",
+    postAlt: "Cute Cat",
+    likes: {
+      likeCount: 1,
+      likedBy: [
+        {
+          _id: "M1NR81Bzlz",
+          firstName: "Joey",
+          lastName: "Tibbiani",
+          username: "joeytribbiani",
+          profileAvatar:
+            "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331046/socialMedia/Kriti-Desai_wuflhp.jpg",
+        },
+      ],
+      dislikedBy: [],
+    },
+    username: "aryashah",
+    createdAt: "2023-06-17T01:06:00+05:30",
+    updatedAt: "2023-06-17T01:06:00+05:30",
+    comments: [
+      {
+        _id: "M1NR81Bzlz98765",
+        comment: "Eager to hear your performance!",
+        firstName: "Joey",
+        lastName: "Tribbiani",
+        username: "joey",
+        profileAvatar:
+          "https://res.cloudinary.com/dxnbnviuz/image/upload/v1686331046/socialMedia/Kriti-Desai_wuflhp.jpg",
+        createdAt: "2023-06-17T01:06:00+05:30",
+        updatedAt: "2023-06-17T01:06:00+05:30",
+      },
+    ],
+  },
 ];
