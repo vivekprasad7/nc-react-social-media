@@ -8,7 +8,7 @@ export const Home = () => {
   return (
     <div className='home-page'>
         <Sidebar/>
-        <Feed/>
+       <Feed/>
         <Widgets/>
 
     </div>

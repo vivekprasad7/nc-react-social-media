@@ -5,6 +5,7 @@ import { Register } from './pages/auth/register/Register';
 import { Signup } from './pages/auth/signup/Signup';
 import { Login } from './pages/auth/login/Login';
 import { Home } from './pages/home/Home';
+import { Profile } from './pages/profile/Profile';
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
       <NavLink to="/signup">Signup</NavLink>
       <NavLink to="/login">Login</NavLink>
       <NavLink to="/">Home</NavLink>
+      <NavLink to="/profile">Profile</NavLink>
+
+
       </nav>
 
       <Routes>
@@ -27,12 +31,7 @@ function App() {
       <Route path="/signup" element={< Signup/>} />
       <Route path="/login" element={< Login/>} />
       <Route path="/" element={< Home/>} />
-
-
-
-
-
-      
+      <Route path="/profile" element={< Profile/>} />
       </Routes>
 
     </div>

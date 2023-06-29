@@ -1,6 +1,5 @@
 import React from 'react'
 import "./Feed.css"
-import { ProfileCard } from '../profile-card/ProfileCard'
 
 export const Feed = () => {
   return (
@@ -21,7 +20,6 @@ export const Feed = () => {
       
         </div>
 
-        <ProfileCard/>
 
     </div>
   )
