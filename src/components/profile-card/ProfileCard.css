@@ -49,18 +49,27 @@
     border:none;
     color:black;
     background-color: white;
-    border: solid 1px orange;
+    /* border: solid 1px orange; */
+    border: solid 2px #1DA1F2;
     font-family: Poppins;
     letter-spacing: 0.9px;
+    font-weight: 500;
     border-radius:20px;
     padding:0.6rem;
     width:100px;
+    cursor: pointer;
+}
+
+.profile-follow-btn{
+    color:white;
+    background-color: #1DA1F2;
 }
 
 .profile-follow-btn:hover{
     color:white;
     background-color: black;
     background-color: red;
+    background-color: #1DA1F2;
 }
 
 
