@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Widgets.css"
+import { Suggested } from '../suggested/Suggested'
 
 export const Widgets = () => {
     return (
@@ -12,6 +13,8 @@ export const Widgets = () => {
                 <input placeholder='Search Twitter' type='text' />
 
             </div>
+
+            <Suggested/>
 
         </div>
     )

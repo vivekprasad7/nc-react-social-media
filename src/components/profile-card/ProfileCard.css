@@ -37,13 +37,34 @@
     margin-top: 0px;
 }
 
-.profile-follow-btn{
+/* .profile-follow-btn{
     border:none;
     background-color:black;
     color: #fff;
     border-radius:20px;
     padding:0.7rem;
+} */
+
+.profile-follow-btn {
+    border:none;
+    color:black;
+    background-color: white;
+    border: solid 1px orange;
+    font-family: Poppins;
+    letter-spacing: 0.9px;
+    border-radius:20px;
+    padding:0.6rem;
+    width:100px;
 }
+
+.profile-follow-btn:hover{
+    color:white;
+    background-color: black;
+    background-color: red;
+}
+
+
+
 
 .profile-links{
     display: flex;

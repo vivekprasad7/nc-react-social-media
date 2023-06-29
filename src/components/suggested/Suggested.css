@@ -1,0 +1,63 @@
+.suggested{
+    background-color: #f3f3f3;
+    width:90%;
+    margin: 2rem;
+    box-sizing: border-box;
+    padding:20px;
+    border-radius: 20px;
+}
+
+.suggested-title{
+    text-align: center;
+}
+
+.follow-unit{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.suggested-profile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.suggested-profile .fa{
+    font-size:50px;
+    /* display: flex;
+    justify-content: center;
+    align-items:center; */
+}
+
+.follow-uname{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.follow-uname p, small{
+    margin: 0;
+    padding:0;
+    padding-left:7px;
+}
+
+
+.follow-btn button{
+    border:none;
+    color:black;
+    background-color: white;
+    font-family: Poppins;
+    letter-spacing: 0.9px;
+    border-radius:20px;
+    padding:0.6rem;
+    width:100px;
+}
+
+.follow-btn button:hover{
+    color:white;
+    background-color: black;
+    background-color: orange;
+}
