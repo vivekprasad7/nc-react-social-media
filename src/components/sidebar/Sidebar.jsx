@@ -27,7 +27,7 @@ export const Sidebar = () => {
         </NavLink>
         <NavLink
           className="side-nav"
-          to="/bookmark"
+          to="/bookmarks"
         >
           <i className="fa-regular fa-bookmark "></i>{" "}
           <span className="nav-title">
@@ -38,10 +38,10 @@ export const Sidebar = () => {
         </NavLink>
         <NavLink
           className="side-nav"
-          to="/explore"
+          to="/profile"
         >
-          <i className="fa-regular fa-compass"></i>{" "}
-          <span className="nav-title">Explore</span>
+          <i className="fa-regular fa-user"></i>{" "}
+          <span className="nav-title">Profile</span>
         </NavLink>
         </div>
 

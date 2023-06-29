@@ -7,6 +7,7 @@ import { Login } from './pages/auth/login/Login';
 import { Home } from './pages/home/Home';
 import { Profile } from './pages/profile/Profile';
 import { Explore } from './pages/explore/Explore';
+import { Bookmarks } from './pages/bookmarks/Bookmarks';
 
 function App() {
   return (
@@ -34,6 +35,8 @@ function App() {
       <Route path="/" element={< Home/>} />
       <Route path="/profile" element={< Profile/>} />
       <Route path="/explore" element={< Explore/>} />
+      <Route path="/bookmarks" element={< Bookmarks/>} />
+
 
       </Routes>
 
