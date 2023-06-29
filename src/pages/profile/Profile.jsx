@@ -3,8 +3,10 @@ import "./Profile.css"
 import { Sidebar } from '../../components/sidebar/Sidebar'
 import { Widgets } from '../../components/widgets/Widgets'
 import { ProfileCard } from '../../components/profile-card/ProfileCard'
+import { useNavigate } from 'react-router-dom'
 
 export const Profile = () => {
+    const navigate = useNavigate();
   return (
     <div className='profile-page'>
         <Sidebar/>
@@ -15,13 +17,9 @@ export const Profile = () => {
               <h3>Profile</h3>
           </div>
 
+          
             <div className="nav-icon">
-            <i class="fa-solid fa-caret-down icon-circle"></i>
-            <ul className='nav-dropdown'>
-              <li className='side-nav'>Trending</li>
-              <li className='side-nav'>  Latest</li>
-            </ul>
-               
+              <i  onClick={() => navigate("/")}class="fa-solid fa-arrow-left icon-circle"></i>
             </div>
       
         </div>

@@ -8,7 +8,7 @@ export const Bookmarks = () => {
   return (
     <div className='bookmarks-page'>
     <Sidebar/>
-   <Feed pageTitle={"Bookmarks"}/>
+   <Feed pageTitle={"Bookmarks"} showBackBtn={true}/>
     <Widgets/>
 
 </div>
