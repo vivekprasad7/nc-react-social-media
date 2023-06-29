@@ -6,6 +6,7 @@ import { Signup } from './pages/auth/signup/Signup';
 import { Login } from './pages/auth/login/Login';
 import { Home } from './pages/home/Home';
 import { Profile } from './pages/profile/Profile';
+import { Explore } from './pages/explore/Explore';
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
       <Route path="/login" element={< Login/>} />
       <Route path="/" element={< Home/>} />
       <Route path="/profile" element={< Profile/>} />
+      <Route path="/explore" element={< Explore/>} />
+
       </Routes>
 
     </div>

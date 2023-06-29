@@ -1,15 +1,16 @@
 import React from 'react'
-import "./Home.css"
+import "./Explore.css"
 import { Sidebar } from '../../components/sidebar/Sidebar'
 import { Feed } from '../../components/feed/Feed'
 import { Widgets } from '../../components/widgets/Widgets'
 
-export const Home = () => {
+export const Explore = () => {
   return (
-    <div className='home-page'>
-        <Sidebar/>
-       <Feed pageTitle={"Home"}/>
-        <Widgets/>
-    </div>
+    <div className='explore-page'>
+    <Sidebar/>
+   <Feed pageTitle={"Explore"}/>
+    <Widgets/>
+
+</div>
   )
 }

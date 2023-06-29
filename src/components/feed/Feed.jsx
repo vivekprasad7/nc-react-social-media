@@ -1,12 +1,12 @@
 import React from 'react'
 import "./Feed.css"
 
-export const Feed = () => {
+export const Feed = ({pageTitle, feedPosts}) => {
   return (
     <div className='feed'>
         <div className='feed-top'>
           <div className='feet-title'>
-              <h3>Home</h3>
+              <h3>{pageTitle}</h3>
           </div>
 
             <div className="nav-icon">
