@@ -6,7 +6,11 @@ import { authReducer } from "../reducers/authReducer";
 
 const AuthContext = createContext();
 
+
 export const AuthContextProvider = ({children}) => {
+
+    const [displayProps, setDisplayProps] = useState(false);
+
     
     const navigate = useNavigate();
     const location = useLocation();
@@ -93,7 +97,7 @@ export const AuthContextProvider = ({children}) => {
     
     
     return(
-        <AuthContext.Provider value={{loginHandler, signupHandler, logoutHandler, authState}}>
+        <AuthContext.Provider value={{loginHandler, signupHandler, logoutHandler, authState, displayProps, setDisplayProps}}>
             {children}
         </AuthContext.Provider>
     )

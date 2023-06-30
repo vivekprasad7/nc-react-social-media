@@ -8,9 +8,13 @@ import { Home } from './pages/home/Home';
 import { Profile } from './pages/profile/Profile';
 import { Explore } from './pages/explore/Explore';
 import { Bookmarks } from './pages/bookmarks/Bookmarks';
+import { CreatePost } from './components/create-post/CreatePost';
+import { useAuthContext } from './contexts/authContext';
 
 function App() {
+  const {displayProps} = useAuthContext();
   return (
+    <>
     <div className="App">
       <div className='blur'></div>
       <div className='blur'></div>
@@ -41,6 +45,11 @@ function App() {
       </Routes>
 
     </div>
+    <div>
+      { displayProps && <CreatePost/>}
+    </div>
+    </>
+
   );
 }
 

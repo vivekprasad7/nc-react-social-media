@@ -1,8 +1,10 @@
 import React from 'react'
 import "./Sidebar.css"
 import { NavLink } from 'react-router-dom'
+import { useAuthContext } from '../../contexts/authContext'
 
 export const Sidebar = () => {
+  const{displayProps, setDisplayProps} = useAuthContext();
   return (
     <div className='sidebar'>
 
@@ -45,7 +47,9 @@ export const Sidebar = () => {
         </NavLink>
         </div>
 
-
+          <div className='create-post-icon'>
+          <i onClick={() => setDisplayProps(!displayProps)} class="fa-solid fa-bolt icon-circle"></i>
+          </div>
 
 
     </div>
