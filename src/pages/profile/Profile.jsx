@@ -10,6 +10,7 @@ export const Profile = () => {
   return (
     <div className='profile-page'>
         <Sidebar/>
+        
 
         <div className='feed'>
         <div className='feed-top'>

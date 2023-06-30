@@ -1,6 +1,7 @@
 import React from 'react'
 import "./Feed.css"
 import { useNavigate } from 'react-router-dom'
+import { PostCard } from '../post-card/PostCard';
 
 export const Feed = ({pageTitle, showBackBtn, feedPosts}) => {
 
@@ -34,6 +35,13 @@ export const Feed = ({pageTitle, showBackBtn, feedPosts}) => {
            
       
         </div>
+
+        <PostCard/>
+        <PostCard/>
+        <PostCard/>
+        <PostCard/>
+        <PostCard/>
+
 
 
     </div>

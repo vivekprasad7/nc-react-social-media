@@ -1,6 +1,6 @@
 .feed{
     flex:0.45;
-    height: 100vh;
+    height: max-content;
     background-color: #f3f3f3;
     border-left: solid 1px #f3f3f3;
     border-right: solid 1px #f3f3f3;
@@ -17,6 +17,7 @@
     position: sticky;
     top:0;
     /* opacity: 0.9; */
+    z-index: 100;
 }
 
 .icon-circle {
@@ -37,6 +38,8 @@
 .nav-icon{
     position:relative;
     cursor: pointer;
+    z-index: 100;
+
 }
 
 .nav-dropdown{
@@ -51,6 +54,7 @@
     border-radius: 15px;
     background-color: #fff;
     border: solid 1px gray;
+    z-index: 100;
 }
 
 

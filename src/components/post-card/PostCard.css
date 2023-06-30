@@ -1,0 +1,101 @@
+.post-card{
+    background-color: #fff;
+    margin:1rem;
+    padding: 1rem;
+    /* border-radius: 15px; */
+    position: relative;
+    z-index: 0;
+}
+
+.post-card-profile{
+    display: flex;
+    align-items: center;
+}
+
+.post-profile-img{
+    font-size: 50px;
+}
+
+
+.post-card-uname{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.post-card-uname p, small{
+    margin: 0;
+    padding:0;
+    padding-left:7px;
+}
+
+.pc-edit-icon{
+    position: absolute;
+    top:30px;
+    right:30px;
+}
+
+.pc-links{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: solid 1px gray;
+    padding: 1rem;
+    border-radius: 15px;
+
+}
+
+.pc-content{
+    box-sizing: border-box;
+    padding:1rem;
+
+
+}
+
+.pc-content img{
+    max-width: 500px;
+    text-align: center;
+}
+
+
+.pc-edit-icon{
+    position:absolute;
+    cursor: pointer;
+    z-index: 100;
+    top:30px;
+    right:30px;
+
+}
+
+.pc-dropdown{
+    margin: 0px;
+    padding:0px;
+    list-style: none;
+    position: absolute;
+    top:2.5rem;
+    left:0.1rem;
+    width: 150px;
+    padding:15px;
+    border-radius: 15px;
+    background-color: #fff;
+    border: solid 1px gray;
+    z-index: 100;
+}
+
+
+
+
+
+.pc-dropdown{
+    display: none;
+}
+
+.pc-dropdown li{
+    padding: 0.5rem;
+    padding-left: 15px;
+}
+
+.pc-edit-icon:hover  .pc-dropdown{
+    display: block;
+
+}
