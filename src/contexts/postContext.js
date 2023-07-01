@@ -13,7 +13,7 @@ export const PostContextProvider = ({children}) => {
 
     const [isLoading, setIsLoading] = useState(false);
 
-    const {authState : { token}} = useAuthContext();
+    const {authState } = useAuthContext();
 
     const postInitialState = {
         posts:[],
@@ -59,7 +59,7 @@ export const PostContextProvider = ({children}) => {
     const createNewPost = async (postData) => {
         setIsLoading(true)
         try{
-            const {data, status} = await createNewPostService(postData, token)
+            const {data, status} = await createNewPostService(postData, authState?.token)
             if(status === 201){
                 postDispatch({type:"CREATE_NEW_POST", payload: data?.posts})
                 setIsLoading(false);
@@ -73,7 +73,12 @@ export const PostContextProvider = ({children}) => {
 
     const editPostHandler = async (postID, postData) =>{
         try{
-            const {data, status} = await editPostService(postID, postData, token)
+            // const {data, status} = await editPostService(postID, postData, authState?.token);
+            const { data, status } = await axios({
+                method: "POSt",
+                url: `/api/posts/like/${postID}`,
+                headers: { authorization: authState?.token },
+              });
 
             if(status === 201){
                 postDispatch({type : "EDIT_POST", payload: data?.posts})
@@ -86,7 +91,13 @@ export const PostContextProvider = ({children}) => {
 
     const likePostHandler = async (postID) =>{
         try{
-            const {data, status} = await likePostService(postID, token)
+            // const {data, status} = await likePostService(postID, authState?.token)
+
+            const { data, status } = await axios({
+                method: "POSt",
+                url: `/api/posts/dislike/${postID}`,
+                headers: { authorization: authState?.token },
+              });
 
             if(status === 200 || status === 201){
                 postDispatch({type : "LIKE_POST", payload: data?.posts})
@@ -99,7 +110,7 @@ export const PostContextProvider = ({children}) => {
 
     const dislikePostHandler = async (postID) =>{
         try{
-            const {data, status} = await dislikePostService(postID, token)
+            const {data, status} = await dislikePostService(postID, authState?.token)
 
             if(status === 200 || status === 201){
                 postDispatch({type : "DISLIKE_POST", payload: data?.posts})
@@ -112,17 +123,18 @@ export const PostContextProvider = ({children}) => {
     
 
     useEffect(() => {
-        if(token){
+        if(authState?.token){
             getAllPosts();
         }
-    },[token])
+
+    },[authState?.token])
 
 
  
 
 
     return(
-        <PostContext.Provider value={{postState, postDispatch, isLoading}}>{children}</PostContext.Provider>
+        <PostContext.Provider value={{postState, postDispatch, isLoading, likePostHandler, dislikePostHandler, }}>{children}</PostContext.Provider>
     )
 }
 

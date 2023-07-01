@@ -46,14 +46,7 @@ export const Feed = ({pageTitle, showBackBtn, feedPosts, isLoading}) => {
             })
         }
 
-        {/* <PostCard/>
-        <PostCard/>
-        <PostCard/>
-        <PostCard/>
-        <PostCard/> */}
-
-
-
+    
     </div>
   )
 }

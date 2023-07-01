@@ -10,6 +10,8 @@ import { Explore } from './pages/explore/Explore';
 import { Bookmarks } from './pages/bookmarks/Bookmarks';
 import { CreatePost } from './components/create-post/CreatePost';
 import { useAuthContext } from './contexts/authContext';
+import { Toaster } from 'react-hot-toast';
+import { RequiresAuth } from './components/RequiresAuth';
 
 function App() {
   const {displayProps} = useAuthContext();
@@ -36,13 +38,25 @@ function App() {
       <Route path="/register" element={< Register/>} />
       <Route path="/signup" element={< Signup/>} />
       <Route path="/login" element={< Login/>} />
+
+      <Route element={<RequiresAuth/>}>
       <Route path="/" element={< Home/>} />
       <Route path="/profile" element={< Profile/>} />
       <Route path="/explore" element={< Explore/>} />
       <Route path="/bookmarks" element={< Bookmarks/>} />
+      </Route>
 
 
       </Routes>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        containerStyle={{
+          bottom: "1rem",
+          right: "1rem",
+          fontSize: "0.9rem",
+        }}
+      />
 
     </div>
     <div>

@@ -12,7 +12,7 @@ export const getAllPostsService = async () =>
 
 
 export const getSinglePostService = async (postID) => {
-     await axios({
+     return await axios({
             method:"GET",
             url:`/api/posts/${postID}`,
         }) 
@@ -20,7 +20,7 @@ export const getSinglePostService = async (postID) => {
 
 
 export const createNewPostService = async (postData, token) => {
-    await axios({
+    return await axios({
         method:"POST",
         url:`api/posts`,
         data:{postData},
@@ -29,7 +29,7 @@ export const createNewPostService = async (postData, token) => {
 }
 
 export const editPostService = async ( postID, postData, token) =>{
-    await axios.post(
+    return await axios.post(
         `/api/posts/edit/${postID}`,
         {postData},
         {headers : {authorization : token}}
@@ -38,7 +38,7 @@ export const editPostService = async ( postID, postData, token) =>{
 
  
 export const likePostService = async (postID, token) => {
-    await axios({
+    return await axios({
         method:"POST",
         url:`/api/posts/like/${postID}`,
         headers:{authorization:token},
@@ -47,7 +47,7 @@ export const likePostService = async (postID, token) => {
 
 
 export const dislikePostService = async (postID, token) => {
-    await axios({
+    return await axios({
         method:"POST",
         url:`/api/posts/dislike/${postID}`,
         headers:{authorization:token},
@@ -56,7 +56,7 @@ export const dislikePostService = async (postID, token) => {
 
 
 export const deletePostService = async ( postID, token) =>{
-    await axios({
+    return await axios({
         method:'DELETE',
         url:`/api/posts/$postID`,
         headers:{authorization:token}

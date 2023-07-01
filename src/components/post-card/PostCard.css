@@ -99,3 +99,7 @@
     display: block;
 
 }
+
+.fa, .fa-solid, .fa-sharp , .fa-regular{
+    cursor: pointer;
+}
