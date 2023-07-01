@@ -2,7 +2,7 @@ import React from 'react'
 import "./Sidebar.css"
 import { NavLink } from 'react-router-dom'
 import { useAuthContext } from '../../contexts/authContext'
-import { getAllPostsService } from '../../services/dataFetchServices'
+import { getAllPostsService, getSinglePostService } from '../../services/dataFetchServices'
 
 export const Sidebar = () => {
   const{displayProps, setDisplayProps} = useAuthContext();
@@ -53,7 +53,7 @@ export const Sidebar = () => {
           </div>
 
           <div className='create-post-icon'>
-          <i onClick={() => getAllPostsService()} class="fa-solid fa-heart icon-circle"></i>
+          <i onClick={() => getSinglePostService()} class="fa-solid fa-heart icon-circle"></i>
           </div>
 
 
