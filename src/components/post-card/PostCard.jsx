@@ -57,7 +57,7 @@ export const PostCard = ({postItem}) => {
             <div className='pc-links'>
                 <i class="fa-sharp fa-regular fa-comment"></i>
 
-                <div onClick={()=> likeToggle()}>
+                <div onClick={likeToggle}>
                   {
                     isPostLikedByUser() ? <i style={{color:"red"}} class="fa-solid fa-heart "></i> :
                     <i class="fa-solid fa-heart "></i>

@@ -16,6 +16,7 @@ export const AuthContextProvider = ({children}) => {
     const location = useLocation();
 
     const localStorageData = JSON.parse(localStorage.getItem("data"))
+    console.log("localStorage Data", localStorageData);
 
     const authInitialState = {
         user:{},

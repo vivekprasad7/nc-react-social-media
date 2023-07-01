@@ -91,17 +91,13 @@ export const PostContextProvider = ({children}) => {
 
     const likePostHandler = async (postID) =>{
         try{
-            // const {data, status} = await likePostService(postID, authState?.token)
-
-            const { data, status } = await axios({
-                method: "POSt",
-                url: `/api/posts/dislike/${postID}`,
-                headers: { authorization: authState?.token },
-              });
+            const {data, status} = await likePostService(postID, authState?.token)
 
             if(status === 200 || status === 201){
                 postDispatch({type : "LIKE_POST", payload: data?.posts})
             }
+            toast.success("Liked Post!")
+
         } catch(e){
             console.error(e)
             toast.error("Oops!, Something went wrong. Please try again.")
