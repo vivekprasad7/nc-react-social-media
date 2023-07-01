@@ -2,7 +2,10 @@ import React from 'react'
 import "./PostCard.css"
 
 
-export const PostCard = () => {
+export const PostCard = ({postItem}) => {
+  console.log(postItem)
+
+  const {content, createdAt, _id, likes, comments,  postImg, postAlt, username} = postItem
   
   return (
     <div className='post-card'>
@@ -23,13 +26,14 @@ export const PostCard = () => {
             </div>
             <div className='post-card-uname'>
                 <p>Vivek Prasad</p>
-                <small>@nxvivek</small>
+                <small>@{username}</small>
             </div>
             </div>
 
             <div className='pc-content'>
-                <p>Order Today!</p>
-                <img src="https://res.cloudinary.com/darl8idou/image/upload/v1686057942/cakefactory/more-img-norah_bq8oa3.webp"/>
+                <p>{content}</p>
+                <img src={postImg} alt={postAlt}/>
+                <small>{likes.likeCount}Likes {comments?.length} Comments</small>
             </div>
 
             {/* <hr></hr> */}

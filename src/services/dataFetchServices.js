@@ -3,12 +3,12 @@
 
 import axios from "axios"
 
-export const getAllPostsService = async () => {
-    await axios({
+export const getAllPostsService = async () => 
+   await axios({
             method:"GET",
-            url:"/api/posts",
+            url:'/api/posts',
         }) 
-}
+
 
 
 export const getSinglePostService = async (postID) => {

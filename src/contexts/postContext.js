@@ -1,10 +1,11 @@
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { useContext } from "react";
 import { createContext } from "react";
 import { postReducer } from "../reducers/postReducer";
 import { createNewPostService, dislikePostService, editPostService, getAllPostsService, getSinglePostService, likePostService } from "../services/dataFetchServices";
 import { toast } from "react-hot-toast";
 import { useAuthContext } from "./authContext";
+import axios from "axios";
 
 const PostContext = createContext();
 
@@ -26,9 +27,15 @@ export const PostContextProvider = ({children}) => {
         setIsLoading(true);
         try{
             const {data, status} = await getAllPostsService();
-            if(status === 200){
-                postDispatch({type: "GET_ALL_POSTS", payload: data?.posts})
-                setIsLoading(false)
+            // const { data, status } = await axios({
+            //     method: "GET",
+            //     url: "/api/posts",
+            //   });
+            console.log(data)
+            if(status === 200 || status === 201){
+                console.log("getAAllPosts", data);
+                postDispatch({type: "GET_ALL_POSTS", payload: data?.posts});
+                setIsLoading(false);
             }
         } catch(e) {
             console.error(e);
@@ -104,12 +111,18 @@ export const PostContextProvider = ({children}) => {
     }
     
 
+    useEffect(() => {
+        if(token){
+            getAllPosts();
+        }
+    },[token])
+
 
  
 
 
     return(
-        <PostContext.Provider value={{postState, postDispatch}}>{children}</PostContext.Provider>
+        <PostContext.Provider value={{postState, postDispatch, isLoading}}>{children}</PostContext.Provider>
     )
 }
 
