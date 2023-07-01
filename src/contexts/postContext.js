@@ -1,17 +1,25 @@
 import { useReducer } from "react";
 import { useContext } from "react";
 import { createContext } from "react";
+import { postReducer } from "../reducers/postReducer";
 
 const PostContext = createContext();
 
 export const PostContextProvider = ({children}) => {
 
-    const [ postState, dispatch] = useReducer(postReducer, postInitialState)
+    const postInitialState = {
+        postLoading:false,
+        posts:[],
+        post:{},
+        sortType:"Latest",
+    }
+
+    const [ postState, postDispatch] = useReducer(postReducer, postInitialState)
 
 
 
     return(
-        <PostContext.Provider value={{}}>{children}</PostContext.Provider>
+        <PostContext.Provider value={{postState, postDispatch}}>{children}</PostContext.Provider>
     )
 }
 
