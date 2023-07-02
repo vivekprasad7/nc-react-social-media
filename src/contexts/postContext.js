@@ -27,10 +27,7 @@ export const PostContextProvider = ({children}) => {
         setIsLoading(true);
         try{
             const {data, status} = await getAllPostsService();
-            // const { data, status } = await axios({
-            //     method: "GET",
-            //     url: "/api/posts",
-            //   });
+
             console.log(data)
             if(status === 200 || status === 201){
                 console.log("getAAllPosts", data);
@@ -130,7 +127,7 @@ export const PostContextProvider = ({children}) => {
 
 
     return(
-        <PostContext.Provider value={{postState, postDispatch, isLoading, likePostHandler, dislikePostHandler, }}>{children}</PostContext.Provider>
+        <PostContext.Provider value={{postState, postDispatch, isLoading, likePostHandler, dislikePostHandler, createNewPost, editPostHandler}}>{children}</PostContext.Provider>
     )
 }
 
