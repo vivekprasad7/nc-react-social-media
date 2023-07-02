@@ -2,6 +2,8 @@ import React from 'react'
 import "./PostCard.css"
 import { usePostContext } from '../../contexts/postContext'
 import { useAuthContext } from '../../contexts/authContext'
+import { useState } from 'react'
+import { EditPost } from '../edit-post/EditPost'
 
 
 export const PostCard = ({postItem}) => {
@@ -11,6 +13,7 @@ export const PostCard = ({postItem}) => {
   const {content, createdAt, _id, likes, comments,  postImg, postAlt, username} = postItem
 
   const {likePostHandler, dislikePostHandler} = usePostContext();
+  const [showEditModal, setShowEditModal] = useState(false);
 
   const isPostLikedByUser = () => {
     return postItem?.likes?.likedBy.find((user) => user._id === authState?.user?._id)
@@ -26,12 +29,13 @@ export const PostCard = ({postItem}) => {
   
   return (
     <div className='post-card'>
+      {showEditModal && (<EditPost post={postItem} showEditModal={showEditModal} setShowEditModal={setShowEditModal}/>)}
          <div className='post-card-profile'>
 
          <div className="pc-edit-icon">
             <i class="fa-solid fa-ellipsis icon-circle"></i>
             <ul className='pc-dropdown'>
-              <li className='side-nav'>Edit</li>
+              <li onClick={() => setShowEditModal(!showEditModal)} className='side-nav'>Edit</li>
               <li className='side-nav'> Delete</li>
             </ul>
                
@@ -70,5 +74,6 @@ export const PostCard = ({postItem}) => {
 
                 </div>
     </div>
+  
   )
 }

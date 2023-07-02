@@ -60,3 +60,7 @@
     border-radius: 20px;
     cursor: pointer;
 }
+
+button{
+    font-family:Poppins, sans-serif;
+}

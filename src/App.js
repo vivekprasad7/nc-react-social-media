@@ -61,6 +61,7 @@ function App() {
     </div>
     <div>
       { displayProps && <CreatePost/>}
+       {/* {showEditModal && (<EditPost post={postItem} showEditModal={showEditModal} setShowEditModal={setShowEditModal}/>)} */}
     </div>
     </>
 
