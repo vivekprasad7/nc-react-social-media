@@ -21,18 +21,26 @@ export const CreatePost = () => {
   return (
     <div className='create-post' style={{display: displayProps ? "block" : "none"}}>
 
+      <div className='modal-header'>
+        <div className='modal-title'>
+        <h3>Create Post</h3>
+        </div>
+
       <div className='cp-close-icon'>
           <i onClick={() => setDisplayProps(!displayProps)} class="fa-solid fa-close icon-circle"></i>
       </div>
+      </div>
 
 
-      <h3>Create Post</h3>
+        <div className='cp-text-area'>
+
         <textarea 
         value={newPostInput?.content}
         placeholder="What's on your mind?"
         onChange={(e) => setNewPostInput({...newPostInput, content: e.target.value})}    
         >
         </textarea>
+        </div>
 
         {
           media && <div>
