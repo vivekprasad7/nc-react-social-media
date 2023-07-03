@@ -70,13 +70,8 @@ export const PostContextProvider = ({children}) => {
 
     const editPostHandler = async (postID, postData) =>{
         try{
-            // const {data, status} = await editPostService(postID, postData, authState?.token);
-            const { data, status } = await axios({
-                method: "POSt",
-                url: `/api/posts/like/${postID}`,
-                headers: { authorization: authState?.token },
-              });
-
+            const {data, status} = await editPostService(postID, postData, authState?.token);
+         
             if(status === 201){
                 postDispatch({type : "EDIT_POST", payload: data?.posts})
             }

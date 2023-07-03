@@ -1,10 +1,9 @@
-edit-post-modal{
+.edit-post-modal{
     width: 500px;
-    height: 99vh;
     margin: 0 auto;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    padding: 1.5rem 1.5rem;
+    padding: 0rem 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,8 +11,72 @@ edit-post-modal{
     box-sizing: border-box;
     z-index: 999999;
     position: absolute;
-    top: 100px;  
+    top: 20px;  
     right: 0;
     left: 0;
     background-color: white;
+}
+
+.edit-post-title{
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+}
+
+.edit-post-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+}
+
+.ep-close-icon{
+    cursor: pointer;
+    position: absolute;
+    top:20px;
+    right:20px;
+}
+
+.edit-post-image{
+    width: 230px;
+    height:230px;
+    background-color: aqua;
+    position: relative;
+    margin: 5px auto;
+
+}
+
+.ep-img{
+    width:100%;
+    height: 100%;
+    overflow: hidden;
+    display: block;
+}
+
+.ep-img-close{
+    position: absolute;
+    color: white;
+    top:5px;
+    right:5px;
+}
+
+.edit-post-buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:1rem;
+}
+
+button{
+    border:none;
+    font-family: Poppins, sans-serif;
+    letter-spacing: 1px;
+    width:120px;
+    background-color: orange;
+    color: white;
+    padding:0.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    text-align: center;
+
 }
