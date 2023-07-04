@@ -12,7 +12,7 @@ export const PostCard = ({postItem}) => {
   const {authState} = useAuthContext();
   const {content, createdAt, _id, likes, comments,  postImg, postAlt, username} = postItem
 
-  const {likePostHandler, dislikePostHandler} = usePostContext();
+  const {likePostHandler, dislikePostHandler, deletePostHandler} = usePostContext();
   const [showEditModal, setShowEditModal] = useState(false);
 
   const isPostLikedByUser = () => {
@@ -36,7 +36,7 @@ export const PostCard = ({postItem}) => {
             <i class="fa-solid fa-ellipsis icon-circle"></i>
             <ul className='pc-dropdown'>
               <li onClick={() => setShowEditModal(!showEditModal)} className='side-nav'>Edit</li>
-              <li className='side-nav'> Delete</li>
+              <li onClick={() =>deletePostHandler(_id)}className='side-nav'> Delete</li>
             </ul>
                
             </div>

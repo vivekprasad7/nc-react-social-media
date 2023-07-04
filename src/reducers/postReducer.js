@@ -14,6 +14,8 @@ export const postReducer = (state,action) => {
         return {...state, posts : action.payload};
         case"EDIT_POST":
         return {...state, posts : action.payload};
+        case"DELETE_POST":
+        return {...state, posts : action.payload};
         case"SORT_POSTS_BY":
         return {...state, sortType : action.payload};
         default:

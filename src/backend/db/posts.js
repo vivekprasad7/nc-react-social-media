@@ -21,7 +21,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: 121213,
     content:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga..",
     likes: {
@@ -34,7 +34,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: 1013,
     content: "Hello Everyone!",
     postImg: "https://cataas.com/cat/cute",
     postAlt: "Cute Cat",

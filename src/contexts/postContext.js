@@ -2,127 +2,150 @@ import { useEffect, useReducer, useState } from "react";
 import { useContext } from "react";
 import { createContext } from "react";
 import { postReducer } from "../reducers/postReducer";
-import { createNewPostService, dislikePostService, editPostService, getAllPostsService, getSinglePostService, likePostService } from "../services/dataFetchServices";
+import { createNewPostService, deletePostService, dislikePostService, editPostService, getAllPostsService, getSinglePostService, likePostService } from "../services/dataFetchServices";
 import { toast } from "react-hot-toast";
 import { useAuthContext } from "./authContext";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const PostContext = createContext();
 
-export const PostContextProvider = ({children}) => {
+export const PostContextProvider = ({ children }) => {
 
     const [isLoading, setIsLoading] = useState(false);
 
-    const {authState } = useAuthContext();
+    const { authState } = useAuthContext();
+    const navigate = useNavigate();
 
     const postInitialState = {
-        posts:[],
-        post:{},
-        sortType:"Latest",
+        posts: [],
+        post: {},
+        sortType: "Latest",
     }
 
-    const [ postState, postDispatch] = useReducer(postReducer, postInitialState)
+    const [postState, postDispatch] = useReducer(postReducer, postInitialState)
 
     const getAllPosts = async () => {
         setIsLoading(true);
-        try{
-            const {data, status} = await getAllPostsService();
+        try {
+            const { data, status } = await getAllPostsService();
 
             console.log(data)
-            if(status === 200 || status === 201){
+            if (status === 200 || status === 201) {
                 console.log("getAAllPosts", data);
-                postDispatch({type: "GET_ALL_POSTS", payload: data?.posts});
+                postDispatch({ type: "GET_ALL_POSTS", payload: data?.posts });
                 setIsLoading(false);
             }
-        } catch(e) {
+        } catch (e) {
             console.error(e);
         }
     }
 
     const getSinglePost = async (postID) => {
         setIsLoading(true);
-        try{
-            const {data, status} = await getSinglePostService(postID);
-            if(status === 200 || status === 201){
-                postDispatch({type:"GET_SINGLE_POST", payload: data?.post})
+        try {
+            const { data, status } = await getSinglePostService(postID);
+            if (status === 200 || status === 201) {
+                postDispatch({ type: "GET_SINGLE_POST", payload: data?.post })
                 setIsLoading(false);
             }
 
-        } catch(e){
+        } catch (e) {
             console.error(e)
         }
     }
 
     const createNewPost = async (postData) => {
         setIsLoading(true)
-        try{
-            const {data, status} = await createNewPostService(postData, authState?.token)
-            if(status === 201){
-                postDispatch({type:"CREATE_NEW_POST", payload: data?.posts})
+        try {
+            const { data, status } = await createNewPostService(postData, authState?.token)
+            if (status === 201) {
+                postDispatch({ type: "CREATE_NEW_POST", payload: data?.posts })
                 setIsLoading(false);
             }
-        } catch(e){
+        } catch (e) {
             console.error(e);
             toast.error("Oops!, Something went wrong. Please try again.")
             setIsLoading(false);
         }
     }
 
-    const editPostHandler = async (postID, postData) =>{
-        try{
-            const {data, status} = await editPostService(postID, postData, authState?.token);
-         
-            if(status === 201){
-                postDispatch({type : "EDIT_POST", payload: data?.posts})
+    const editPostHandler = async (postID, postData) => {
+        try {
+            const { data, status } = await editPostService(postID, postData, authState?.token);
+
+            if (status === 201) {
+                postDispatch({ type: "EDIT_POST", payload: data?.posts })
             }
-        } catch(e){
+        } catch (e) {
             console.error(e)
             toast.error("Oops!, Something went wrong. Please try again.")
         }
     }
 
-    const likePostHandler = async (postID) =>{
-        try{
-            const {data, status} = await likePostService(postID, authState?.token)
+    const likePostHandler = async (postID) => {
+        try {
+            const { data, status } = await likePostService(postID, authState?.token)
 
-            if(status === 200 || status === 201){
-                postDispatch({type : "LIKE_POST", payload: data?.posts})
+            if (status === 200 || status === 201) {
+                postDispatch({ type: "LIKE_POST", payload: data?.posts })
             }
-            toast.success("Liked Post!")
+            toast.success("Post Liked!")
 
-        } catch(e){
+        } catch (e) {
             console.error(e)
             toast.error("Oops!, Something went wrong. Please try again.")
         }
     }
 
-    const dislikePostHandler = async (postID) =>{
-        try{
-            const {data, status} = await dislikePostService(postID, authState?.token)
+    const dislikePostHandler = async (postID) => {
+        try {
+            const { data, status } = await dislikePostService(postID, authState?.token)
 
-            if(status === 200 || status === 201){
-                postDispatch({type : "DISLIKE_POST", payload: data?.posts})
+            if (status === 200 || status === 201) {
+                postDispatch({ type: "DISLIKE_POST", payload: data?.posts })
             }
-        } catch(e){
-            console.error(e)
-            toast.error("Oops!, Something went wrong. Please try again.")
+        } catch (e) {
+            console.error(e);
+            toast.error("Oops!, Something went wrong. Please try again.");
         }
     }
-    
+
+    const deletePostHandler = async (postID) => {
+        try {
+            const { data, status } = await deletePostService(postID, authState?.token);
+
+            if (status === 200 || status === 201) {
+                postDispatch({ type: "DELETE_POST", payload: data?.posts });
+                setTimeout(() => {
+                    navigate("/");
+                    window.scroll({ top: 0, behavior: "smooth" });
+                }, 1800)
+                toast.success("Post Deleted!");
+
+            }
+
+        } catch (e) {
+            console.error(e);
+            toast.error("Oops!, Something went wrong. Please try again.");
+
+
+        }
+    }
+
 
     useEffect(() => {
-        if(authState?.token){
+        if (authState?.token) {
             getAllPosts();
         }
 
-    },[authState?.token])
+    }, [authState?.token])
 
 
- 
 
 
-    return(
-        <PostContext.Provider value={{postState, postDispatch, isLoading, likePostHandler, dislikePostHandler, createNewPost, editPostHandler}}>{children}</PostContext.Provider>
+
+    return (
+        <PostContext.Provider value={{ postState, postDispatch, isLoading, likePostHandler, dislikePostHandler, createNewPost, editPostHandler, deletePostHandler }}>{children}</PostContext.Provider>
     )
 }
 

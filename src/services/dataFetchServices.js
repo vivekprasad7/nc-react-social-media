@@ -58,7 +58,7 @@ export const dislikePostService = async (postID, token) => {
 export const deletePostService = async ( postID, token) =>{
     return await axios({
         method:'DELETE',
-        url:`/api/posts/$postID`,
-        headers:{authorization:token}
+        url:`/api/posts/${postID}`,
+        headers:{authorization:token},
     })
 }
