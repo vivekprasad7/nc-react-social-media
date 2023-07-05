@@ -13,14 +13,17 @@ export const NewComment = ({showCommentModal, setShowCommentModal, postID}) => {
 
     <div className='new-comment-modal'>
         <textarea
+        placeholder="Add Comment..."
         value={newCommentInput}
         onChange={(e) => setNewCommentInput(e.target.value)}
         >
 
         </textarea>
         <button onClick={()=> {
-          setShowCommentModal(false);
           addCommentHandler(postID, newCommentInput);
+          setNewCommentInput("");
+          setShowCommentModal(false);
+
           
           }}>Add Comment</button>
 

@@ -51,18 +51,14 @@ export const addPostCommentHandler = function (schema, request) {
 
     const comment = {
       _id: uuid(),
-      ...commentData,
+      text: commentData,
       username: user.username,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      profileAvatar: user.profileAvatar,
       votes: { upvotedBy: [], downvotedBy: [] },
       createdAt: formatDate(),
       updatedAt: formatDate(),
     };
     const post = schema.posts.findBy({ _id: postId }).attrs;
     post.comments.push(comment);
-
     this.db.posts.update({ _id: postId }, post);
     return new Response(201, {}, { posts: this.db.posts });
   } catch (error) {
@@ -110,7 +106,7 @@ export const editPostCommentHandler = function (schema, request) {
     }
     post.comments[commentIndex] = {
       ...post.comments[commentIndex],
-      ...commentData,
+      text: commentData,
       updatedAt: formatDate(),
     };
     this.db.posts.update({ _id: postId }, post);

@@ -141,7 +141,7 @@ export const PostContextProvider = ({ children }) => {
         }
         } catch(e){
             console.error(e);
-            // toast.error(e.response.data.errors[0])
+            toast.error("Oops, Something went wrong! Please try again.")
         }
     }
 

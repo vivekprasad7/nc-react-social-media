@@ -32,7 +32,7 @@ import {
   deletePostCommentHandler,
   upvotePostCommentHandler,
   downvotePostCommentHandler,
-} from "./backend/controllers/CommentsController";
+} from "./backend/controllers/CommentController";
 
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
@@ -105,7 +105,7 @@ export function makeServer({ environment = "development" } = {}) {
         "/comments/edit/:postId/:commentId",
         editPostCommentHandler.bind(this)
       );
-      this.delete(
+      this.post(
         "/comments/delete/:postId/:commentId",
         deletePostCommentHandler.bind(this)
       );
@@ -117,6 +117,7 @@ export function makeServer({ environment = "development" } = {}) {
         "/comments/downvote/:postId/:commentId",
         downvotePostCommentHandler.bind(this)
       );
+
     },
   });
 }
