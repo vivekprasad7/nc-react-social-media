@@ -12,6 +12,7 @@ import { CreatePost } from './components/create-post/CreatePost';
 import { useAuthContext } from './contexts/authContext';
 import { Toaster } from 'react-hot-toast';
 import { RequiresAuth } from './components/RequiresAuth';
+import { PostDetails } from './pages/post-details/PostDetails';
 
 function App() {
   const {displayProps} = useAuthContext();
@@ -29,6 +30,8 @@ function App() {
       <NavLink to="/login">Login</NavLink>
       <NavLink to="/">Home</NavLink>
       <NavLink to="/profile">Profile</NavLink>
+      <NavLink to="/post/:postID">Post Details</NavLink>
+
 
 
       </nav>
@@ -44,6 +47,7 @@ function App() {
       <Route path="/profile" element={< Profile/>} />
       <Route path="/explore" element={< Explore/>} />
       <Route path="/bookmarks" element={< Bookmarks/>} />
+      <Route path="/post/:postID" element={< PostDetails/>} />
       </Route>
 
 

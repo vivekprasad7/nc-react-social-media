@@ -1,0 +1,88 @@
+.post-details-page{
+    display:flex;
+}
+
+.post-details-section{
+    flex:0.45;
+    height: max-content;
+    background-color: #f3f3f3;
+    border-left: solid 1px #f3f3f3;
+    border-right: solid 1px #f3f3f3;
+}
+
+.feed-top{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff;
+    padding:2px 20px;
+    text-align: center;
+    position: sticky;
+    top:0;
+    /* opacity: 0.9; */
+    z-index: 100;
+}
+
+.icon-circle {
+    background: #f3f5f9;
+    border-radius: 50%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    width: 50px;
+}
+
+.trending-toggle{
+    display: flex;
+    justify-content: center;
+    background-color: #f3f3f3;
+}
+
+.nav-icon{
+    position:relative;
+    cursor: pointer;
+    z-index: 100;
+
+}
+
+.nav-dropdown{
+    margin: 0px;
+    padding:0px;
+    list-style: none;
+    position: absolute;
+    top:2.5rem;
+    left:0.1rem;
+    width: 150px;
+    padding:15px;
+    border-radius: 15px;
+    background-color: #fff;
+    border: solid 1px gray;
+    z-index: 100;
+}
+
+
+
+
+
+.nav-dropdown{
+    display: none;
+}
+
+.nav-dropdown li{
+    padding: 0.5rem;
+    padding-left: 15px;
+}
+
+.nav-icon:hover  .nav-dropdown{
+    display: block;
+
+}
+
+
+/* Comments Card */
+
+.comments-card{
+    margin: 0px 1rem;
+    height:400px;
+    background-color: #fff;
+}

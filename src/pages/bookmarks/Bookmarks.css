@@ -1,3 +1,11 @@
 .bookmarks-page{
     display: flex;
 }
+
+.bookmarks-section{
+    flex:0.45;
+    height: 100vh;
+    background-color: #f3f3f3;
+    border-left: solid 1px #f3f3f3;
+    border-right: solid 1px #f3f3f3;
+}

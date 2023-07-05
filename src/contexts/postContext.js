@@ -183,7 +183,7 @@ export const PostContextProvider = ({ children }) => {
 
 
     return (
-        <PostContext.Provider value={{ postState, postDispatch, isLoading, likePostHandler, dislikePostHandler, createNewPost, editPostHandler, deletePostHandler, addCommentHandler, editCommentHandler, deleteCommentHandler }}>{children}</PostContext.Provider>
+        <PostContext.Provider value={{ postState, postDispatch, isLoading, likePostHandler, dislikePostHandler, createNewPost, editPostHandler, deletePostHandler, addCommentHandler, editCommentHandler, deleteCommentHandler, getSinglePost }}>{children}</PostContext.Provider>
     )
 }
 

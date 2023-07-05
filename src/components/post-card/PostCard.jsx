@@ -5,6 +5,7 @@ import { useAuthContext } from '../../contexts/authContext'
 import { useState } from 'react'
 import { EditPost } from '../edit-post/EditPost'
 import { NewComment } from '../new-comment/NewComment'
+import { useNavigate } from 'react-router-dom'
 
 
 export const PostCard = ({postItem}) => {
@@ -15,6 +16,7 @@ export const PostCard = ({postItem}) => {
 
   const {likePostHandler, dislikePostHandler, deletePostHandler} = usePostContext();
   const [showEditModal, setShowEditModal] = useState(false);
+  const navigate = useNavigate();
 
   const [showCommentModal, setShowCommentModal] = useState(false);
 
@@ -33,7 +35,7 @@ export const PostCard = ({postItem}) => {
   }
   
   return (
-    <div className='post-card'>
+    <div  className='post-card'>
       {showEditModal && (<EditPost post={postItem} showEditModal={showEditModal} setShowEditModal={setShowEditModal}/>)}
       {showCommentModal && (<NewComment showCommentModal={showCommentModal} setShowCommentModal={setShowCommentModal} postID={_id}/>)}
          <div className='post-card-profile'>
@@ -58,9 +60,9 @@ export const PostCard = ({postItem}) => {
             </div>
 
             <div className='pc-content'>
-                <p>{content}</p>
+                <p onClick={() => navigate(`/post/${_id}`)}>{content}</p>
                 <img src={postImg} alt={postAlt}/>
-                <small>{likes.likeCount} Likes {comments?.length === undefined ? 0 : comments?.length} Comments</small>
+                <small>{likes?.likeCount} Likes {comments?.length === undefined ? 0 : comments?.length} Comments</small>
             </div>
 
             {/* <hr></hr> */}
