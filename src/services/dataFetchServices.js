@@ -67,7 +67,7 @@ export const dislikePostService = async (postID, token) => {
 export const addCommentService = async (postID, commentData, token) => {
     return await axios.post(
         `/api/comments/add/${postID}`,
-        {commentData},
+        {commentData : commentData},
         {headers:{authorization: token}},
     )
 }
@@ -75,7 +75,7 @@ export const addCommentService = async (postID, commentData, token) => {
 export const editCommentService = async (postID, commentID, commentData, token) => {
     return await axios.post(
         `/api/comments/edit/${postID}/${commentID}`,
-        {commentData},
+        {commentData : commentData},
         {headers:{authorization: token}},
     )
 }
@@ -83,6 +83,7 @@ export const editCommentService = async (postID, commentID, commentData, token) 
 export const deleteCommentService = async (postID, commentID, token) => {
     return await axios.post(
         `/api/comments/delete/${postID}/${commentID}`,
+        {},
         {headers:{authorization: token}},
     )
 }

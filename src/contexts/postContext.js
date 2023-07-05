@@ -140,7 +140,8 @@ export const PostContextProvider = ({ children }) => {
             toast.success("Comment Added!");
         }
         } catch(e){
-            toast.error(e.response.data.errors[0])
+            console.error(e);
+            // toast.error(e.response.data.errors[0])
         }
     }
 
@@ -182,7 +183,7 @@ export const PostContextProvider = ({ children }) => {
 
 
     return (
-        <PostContext.Provider value={{ postState, postDispatch, isLoading, likePostHandler, dislikePostHandler, createNewPost, editPostHandler, deletePostHandler }}>{children}</PostContext.Provider>
+        <PostContext.Provider value={{ postState, postDispatch, isLoading, likePostHandler, dislikePostHandler, createNewPost, editPostHandler, deletePostHandler, addCommentHandler, editCommentHandler, deleteCommentHandler }}>{children}</PostContext.Provider>
     )
 }
 

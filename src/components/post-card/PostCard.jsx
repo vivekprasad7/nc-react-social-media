@@ -4,6 +4,7 @@ import { usePostContext } from '../../contexts/postContext'
 import { useAuthContext } from '../../contexts/authContext'
 import { useState } from 'react'
 import { EditPost } from '../edit-post/EditPost'
+import { NewComment } from '../new-comment/NewComment'
 
 
 export const PostCard = ({postItem}) => {
@@ -14,6 +15,10 @@ export const PostCard = ({postItem}) => {
 
   const {likePostHandler, dislikePostHandler, deletePostHandler} = usePostContext();
   const [showEditModal, setShowEditModal] = useState(false);
+
+  const [showCommentModal, setShowCommentModal] = useState(false);
+
+
 
   const isPostLikedByUser = () => {
     return postItem?.likes?.likedBy.find((user) => user._id === authState?.user?._id)
@@ -30,6 +35,7 @@ export const PostCard = ({postItem}) => {
   return (
     <div className='post-card'>
       {showEditModal && (<EditPost post={postItem} showEditModal={showEditModal} setShowEditModal={setShowEditModal}/>)}
+      {showCommentModal && (<NewComment showCommentModal={showCommentModal} setShowCommentModal={setShowCommentModal} postID={_id}/>)}
          <div className='post-card-profile'>
 
          <div className="pc-edit-icon">
@@ -59,7 +65,7 @@ export const PostCard = ({postItem}) => {
 
             {/* <hr></hr> */}
             <div className='pc-links'>
-                <i class="fa-sharp fa-regular fa-comment"></i>
+                <i onClick={() => setShowCommentModal(!showCommentModal)}class="fa-sharp fa-regular fa-comment"></i>
 
                 <div onClick={likeToggle}>
                   {
