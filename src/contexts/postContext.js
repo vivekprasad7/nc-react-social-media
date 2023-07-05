@@ -2,7 +2,7 @@ import { useEffect, useReducer, useState } from "react";
 import { useContext } from "react";
 import { createContext } from "react";
 import { postReducer } from "../reducers/postReducer";
-import { createNewPostService, deletePostService, dislikePostService, editPostService, getAllPostsService, getSinglePostService, likePostService } from "../services/dataFetchServices";
+import { addCommentService, createNewPostService, deleteCommentService, deletePostService, dislikePostService, editCommentService, editPostService, getAllPostsService, getSinglePostService, likePostService } from "../services/dataFetchServices";
 import { toast } from "react-hot-toast";
 import { useAuthContext } from "./authContext";
 import { useNavigate } from "react-router-dom";
@@ -130,6 +130,44 @@ export const PostContextProvider = ({ children }) => {
 
         }
     }
+
+
+    const addCommentHandler = async (postID, commentData) => {
+        try{
+        const {data, status} = await addCommentService(postID, commentData, authState?.token );
+        if(status === 201 || status === 200){
+            postDispatch({type:"ADD_COMMENT", payload: data?.posts})
+            toast.success("Comment Added!");
+        }
+        } catch(e){
+            toast.error(e.response.data.errors[0])
+        }
+    }
+
+    const editCommentHandler = async (postID, commentID, commentData) => {
+        try{
+        const {data, status} = await editCommentService(postID, commentID, commentData, authState?.token);
+        if(status === 201 || status === 200){
+            postDispatch({type:"EDIT_COMMENT", payload: data?.posts})
+            toast.success("Comment Edited!");
+        }
+        } catch(e){
+            toast.error(e.response.data.errors[0])
+        }
+    };
+
+    const deleteCommentHandler = async (postID, commentID) => {
+        try{
+        const {data, status} = await deleteCommentService( postID, commentID, authState?.token);
+        if(status === 201 || status === 200){
+            postDispatch({type:"DELETE_COMMENT", payload: data?.posts})
+            toast.success("Comment Deleted!");
+        }
+        } catch(e){
+            toast.error(e.response.data.errors[0])
+        }
+    }
+
 
 
     useEffect(() => {
