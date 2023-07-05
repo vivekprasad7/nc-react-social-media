@@ -36,6 +36,13 @@ export const editPostService = async ( postID, postData, token) =>{
     )
 }
 
+export const deletePostService = async ( postID, token) =>{
+    return await axios({
+        method:'DELETE',
+        url:`/api/posts/${postID}`,
+        headers:{authorization:token},
+    })
+}
  
 export const likePostService = async (postID, token) => {
     return await axios({
@@ -55,10 +62,27 @@ export const dislikePostService = async (postID, token) => {
 }
 
 
-export const deletePostService = async ( postID, token) =>{
-    return await axios({
-        method:'DELETE',
-        url:`/api/posts/${postID}`,
-        headers:{authorization:token},
-    })
+// Comment Services
+
+export const addCommentService = async (postID, commentData, token) => {
+    return await axios.post(
+        `/api/comments/add/${postID}`,
+        {commentData},
+        {headers:{authorization: token}},
+    )
+}
+
+export const editCommentService = async (postID, commentID, commentData, token) => {
+    return await axios.post(
+        `/api/comments/edit/${postID}/${commentID}`,
+        {commentData},
+        {headers:{authorization: token}},
+    )
+}
+
+export const deleteCommentService = async (postID, commentID, token) => {
+    return await axios.post(
+        `/api/comments/delete/${postID}/${commentID}`,
+        {headers:{authorization: token}},
+    )
 }

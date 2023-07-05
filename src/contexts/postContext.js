@@ -31,7 +31,6 @@ export const PostContextProvider = ({ children }) => {
 
             console.log(data)
             if (status === 200 || status === 201) {
-                console.log("getAAllPosts", data);
                 postDispatch({ type: "GET_ALL_POSTS", payload: data?.posts });
                 setIsLoading(false);
             }
