@@ -2,7 +2,7 @@ import { useEffect, useReducer, useState } from "react";
 import { useContext } from "react";
 import { createContext } from "react";
 import { postReducer } from "../reducers/postReducer";
-import { addCommentService, createNewPostService, deleteCommentService, deletePostService, dislikePostService, editCommentService, editPostService, getAllPostsService, getSinglePostService, likePostService } from "../services/dataFetchServices";
+import { addCommentService, createNewPostService, deleteCommentService, deletePostService, dislikePostService, editCommentService, editPostService, getAllPostsService, getAllUserPostsService, getSinglePostService, likePostService } from "../services/dataFetchServices";
 import { toast } from "react-hot-toast";
 import { useAuthContext } from "./authContext";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +20,7 @@ export const PostContextProvider = ({ children }) => {
         posts: [],
         post: {},
         sortType: "Latest",
+        userPosts:[],
     }
 
     const [postState, postDispatch] = useReducer(postReducer, postInitialState)
@@ -50,6 +51,22 @@ export const PostContextProvider = ({ children }) => {
 
         } catch (e) {
             console.error(e)
+        }
+    }
+
+    const getAllUserPosts = async (username) => {
+        setIsLoading(true);
+        try{
+            const {data, status} = await getAllUserPostsService(username);
+            if(status === 200 || status === 201){
+                postDispatch({type:"GET_ALL_USER_POSTS", payload: data?.posts});
+                setIsLoading(false);
+            }
+
+        } catch(e){
+            console.error(e);
+            toast.error(e.response.data.errors[0]);
+            setIsLoading(false);
         }
     }
 
@@ -183,7 +200,20 @@ export const PostContextProvider = ({ children }) => {
 
 
     return (
-        <PostContext.Provider value={{ postState, postDispatch, isLoading, likePostHandler, dislikePostHandler, createNewPost, editPostHandler, deletePostHandler, addCommentHandler, editCommentHandler, deleteCommentHandler, getSinglePost }}>{children}</PostContext.Provider>
+        <PostContext.Provider value={{ 
+            postState, 
+            postDispatch, 
+            isLoading, 
+            likePostHandler, 
+            dislikePostHandler, 
+            createNewPost, 
+            editPostHandler, 
+            getAllUserPosts,
+            deletePostHandler, 
+            addCommentHandler, 
+            editCommentHandler, 
+            deleteCommentHandler, 
+            getSinglePost }}>{children}</PostContext.Provider>
     )
 }
 

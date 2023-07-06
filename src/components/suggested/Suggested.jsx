@@ -3,11 +3,19 @@ import "./Suggested.css"
 import { useUserContext } from '../../contexts/userContext'
 import { useAuthContext } from '../../contexts/authContext';
 import { usePostContext } from '../../contexts/postContext';
+import { useNavigate } from 'react-router-dom';
 
 export const Suggested = () => {
     const {userState, userLoading, followUserHandler, unfollowUserHandler} = useUserContext();
     const {authState} = useAuthContext();
     const {getAllUserPosts} = usePostContext();
+    const navigate = useNavigate();
+
+    const isFollowedByUser = (userID) => {
+        return userState?.users?.find((user) => user._id === userID)
+        ?.followers.some((user) => user._id === authState?.user?._id);
+    }
+
   return (
     <div className='suggested'>
         <div className='suggested-title'>

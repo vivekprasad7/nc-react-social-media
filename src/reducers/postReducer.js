@@ -6,6 +6,8 @@ export const postReducer = (state,action) => {
         return {...state, posts : action.payload};
         case"GET_SINGLE_POST":
         return {...state, post : action.payload};
+        case"GET_ALL_USER_POSTS":
+        return {...state, userPosts : action.payload};
         case"CREATE_NEW_POST":
         return {...state, posts : action.payload};
         case"LIKE_POST":

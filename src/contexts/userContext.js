@@ -41,21 +41,6 @@ export const UserContextProvider = ({children}) => {
         }
     }
 
-    const getAllUserPosts = async (username) => {
-        setIsLoading(true);
-        try{
-            const {data, status} = await getAllUserPostsService(username);
-            if(status === 200 || status === 201){
-                postDispatch({type:"GET_ALL_USER_POSTS", payload: data?.posts});
-                setIsLoading(false);
-            }
-
-        } catch(e){
-            console.error(e);
-            toast.error(e.response.data.errors[0]);
-            setIsLoading(false);
-        }
-    }
 
     const editUserHandler = async(userData) => {
         try{
@@ -167,7 +152,6 @@ export const UserContextProvider = ({children}) => {
             userState,
             userDispatch,
             getAllUsers,
-            getAllUserPosts,
             editUserHandler,
             followUserHandler,
             unfollowUserHandler,
