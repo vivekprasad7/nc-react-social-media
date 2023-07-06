@@ -10,6 +10,13 @@ export const getAllPostsService = async () =>
         }) 
 
 
+export const getAllUserPostsService = async (username) => {
+   return await axios({
+    method:"GET",
+    url:`/api/posts/user/${username}`,
+   })
+}
+
 
 export const getSinglePostService = async (postID) => {
      return await axios({

@@ -2,7 +2,7 @@ import { useReducer } from "react";
 import { useContext } from "react";
 import { createContext } from "react";
 import { toast } from "react-hot-toast";
-import { addBookmarkService, editUserService, followUserService, getAllBookmarksService, getAllUsersService, removeBookmarkService, unfollowUserService } from "../services/dataFetchServices";
+import { addBookmarkService, editUserService, followUserService, getAllBookmarksService, getAllUserPostsService, getAllUsersService, removeBookmarkService, unfollowUserService } from "../services/dataFetchServices";
 import { useState } from "react";
 import { useAuthContext } from "./authContext";
 import { useEffect } from "react";
@@ -25,6 +25,7 @@ export const UserContextProvider = ({children}) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const getAllUsers = async () => {
+        setUserLoading(true);
         try{
             const {data, status} = await getAllUsersService();
 
@@ -36,6 +37,23 @@ export const UserContextProvider = ({children}) => {
         } catch(e){
             console.error(e);
             toast.error(e.response.data.errors[0]);
+            setUserLoading(false);
+        }
+    }
+
+    const getAllUserPosts = async (username) => {
+        setIsLoading(true);
+        try{
+            const {data, status} = await getAllUserPostsService(username);
+            if(status === 200 || status === 201){
+                postDispatch({type:"GET_ALL_USER_POSTS", payload: data?.posts});
+                setIsLoading(false);
+            }
+
+        } catch(e){
+            console.error(e);
+            toast.error(e.response.data.errors[0]);
+            setIsLoading(false);
         }
     }
 
@@ -149,12 +167,17 @@ export const UserContextProvider = ({children}) => {
             userState,
             userDispatch,
             getAllUsers,
+            getAllUserPosts,
             editUserHandler,
             followUserHandler,
             unfollowUserHandler,
             getAllBookmarks,
             addBookmarkHandler,
             removeBookmarkHandler,
+            userLoading,
+            setUserLoading,
+            isLoading,
+            setIsLoading
         }}>{children}</UserContext.Provider>
     )
 }
