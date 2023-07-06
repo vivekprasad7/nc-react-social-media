@@ -123,6 +123,32 @@ export const unfollowUserService = async (userID, token) => {
 }
 
 
+// Bookmarks Service
+
+export const getAllBookmarksService = async (token) =>{
+    return await axios({
+        method:'GET',
+        url:'/api/users/bookmark/',
+        headers:{authorization:token}
+    })
+}
+
+
+export const addBookmarkService = async (postID, token) =>{
+    return await axios({
+        method:'POST',
+        url:`/api/users/bookmark/${postID}`,
+        headers:{authorization:token}
+    })
+}
+
+export const removeBookmarkService = async (postID, token) =>{
+    return await axios({
+        method:'POST',
+        url:`/api/users/remove-bookmark/${postID}`,
+        headers:{authorization:token},
+    })
+}
 
 
 
