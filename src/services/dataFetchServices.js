@@ -87,3 +87,43 @@ export const deleteCommentService = async (postID, commentID, token) => {
         {headers:{authorization: token}},
     )
 }
+
+// User Services
+
+export const getAllUsersService = async () =>{
+    return await axios({
+        method:'GET',
+        url:'/api/users',
+    })
+}
+
+export const editUserService = async (userData, token) =>{
+    return await axios.post(
+        "/api/users/edit",
+        {userData},
+        {headers:{authorization:token}}
+        
+    )
+}
+
+export const followUserService = async (userID, token) => {
+    return await axios.post(
+        `/api/users/follow/${userID}`,
+        {},
+        {headers:{authorization:token}},
+    )
+}
+
+export const unfollowUserService = async (userID, token) => {
+    return await axios.post(
+        `/api/users/unfollow/${userID}`,
+        {},
+        {headers:{authorization:token}},
+    )
+}
+
+
+
+
+
+
