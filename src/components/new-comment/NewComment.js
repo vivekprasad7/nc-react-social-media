@@ -7,6 +7,7 @@ import { useState } from 'react'
 export const NewComment = ({showCommentModal, setShowCommentModal, postID}) => {
   const {addCommentHandler} = usePostContext();
   const [newCommentInput, setNewCommentInput] = useState("");
+  
 
   return (
     <Modal open={showCommentModal} onClose={() => setShowCommentModal(false)}>
