@@ -16,7 +16,9 @@ export const users = [
     updatedAt: formatDate(),
     profilePic:"https://randomuser.me/api/portraits/men/1.jpg",
     status:"Amazing",
-
+    followers:[],
+    following:[],
+    bookmarks:[],
   },
   {
     _id: "675bc919-36f5-4cab-9d38-b3ea430533e1",

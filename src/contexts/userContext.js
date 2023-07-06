@@ -2,7 +2,7 @@ import { useReducer } from "react";
 import { useContext } from "react";
 import { createContext } from "react";
 import { toast } from "react-hot-toast";
-import { followUserService, getAllUsersService } from "../services/dataFetchServices";
+import { followUserService, getAllUsersService, unfollowUserService } from "../services/dataFetchServices";
 import { useState } from "react";
 import { useAuthContext } from "./authContext";
 
@@ -35,6 +35,43 @@ export const UserContextProvider = ({children}) => {
             toast.error(e.response.data.errors[0]);
         }
     }
+
+
+    const followUserHandler = async (userID) =>{
+        try{
+            const {data, status} = await followUserService(userID, authState?.token);
+
+            if(status === 200 || status === 201){
+                userDispatch({type:"UPDATE_USER_DATA", payload: data?.user});
+                userDispatch({type:"UPDATE_USER_DATA", payload: data?.followUser});
+                authDispatch({type:"SET_USER", payload: data?.user});
+                toast.success(`Followed @${data?.followUser.username}`);
+            }
+        } catch(e){
+            console.error(e);
+            toast.error(e.response.data.errors[0]);
+        }
+    }
+
+    const unfollowUserHandler = async (userID) =>{
+        try{
+            const {data, status} = await unfollowUserService(userID, authState?.token);
+
+            if(status === 200 || status === 201){
+                userDispatch({type:"UPDATE_USER_DATA", payload: data?.user});
+                userDispatch({type:"UPDATE_USER_DATA", payload: data?.followUser});
+                authDispatch({type:"SET_USER", payload: data?.user});
+                toast.success(`Unfollowed @${data?.followUser.username}`);
+            }
+        } catch(e){
+            console.error(e);
+            toast.error(e.response.data.errors[0]);
+        }
+    }
+
+    
+
+
 
 
     return(
