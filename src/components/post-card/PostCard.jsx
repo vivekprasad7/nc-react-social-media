@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { EditPost } from '../edit-post/EditPost'
 import { NewComment } from '../new-comment/NewComment'
 import { useNavigate } from 'react-router-dom'
+import { useUserContext } from '../../contexts/userContext'
 
 
 export const PostCard = ({postItem}) => {
@@ -15,11 +16,11 @@ export const PostCard = ({postItem}) => {
   const {content, createdAt, _id, likes, comments,  postImg, postAlt, username} = postItem
 
   const {likePostHandler, dislikePostHandler, deletePostHandler} = usePostContext();
+  const {userState, addBookmarkHandler, removeBookmarkHandler} = useUserContext();
   const [showEditModal, setShowEditModal] = useState(false);
   const navigate = useNavigate();
 
   const [showCommentModal, setShowCommentModal] = useState(false);
-
 
 
   const isPostLikedByUser = () => {
@@ -33,6 +34,8 @@ export const PostCard = ({postItem}) => {
       likePostHandler(_id);
     }
   }
+
+  const isBookmarked = () => userState?.bookmarks?.find((postID) => postID === _id)
   
   return (
     <div  className='post-card'>
@@ -76,9 +79,18 @@ export const PostCard = ({postItem}) => {
 
                   }
                 </div>
-
                 <i class="fa-solid fa-share"></i>
-               <i class="fa fa-bookmark"></i> 
+
+                {
+                  isBookmarked() ? (<div className='post-icon' onClick={() => removeBookmarkHandler(_id)}>
+                                   <i class="fa-solid fa-bookmark"></i> 
+
+                  </div>) : (<div className='post-icon' onClick={() => addBookmarkHandler(_id)}>
+                                   <i class="fa-regular fa-bookmark"></i> 
+
+                  </div>)
+                }
+
 
                 </div>
     </div>

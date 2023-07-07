@@ -91,7 +91,8 @@ export const UserContextProvider = ({children}) => {
         const getAllBookmarks = async() => {
             setIsLoading(true);
             try{
-                const {data, status} = await getAllBookmarksService();
+                const {data, status} = await getAllBookmarksService(authState?.token);
+                console.log("bookmarks", data)
                 if(status === 200){
                     userDispatch({type: "GET_ALL_BOOKMARKS", payload: data?.bookmarks})
                     setIsLoading(false);
@@ -140,7 +141,11 @@ export const UserContextProvider = ({children}) => {
 
         useEffect(()=> {
             authState?.token && getAllUsers();
-          
+            authState?.token && getAllBookmarks();
+            // if(authState?.token){
+            //     getAllUsers();
+            //     getAllBookmarks();
+            // }     
         }, [authState?.token])
 
 

@@ -43,7 +43,7 @@ export const Bookmarks = () => {
                     <>
                       <PostCard
                         postItem={postState?.posts?.find(
-                          (post) => post._id === postID
+                          (post) => post?._id === postID
                         )}
                       />
                     </>
