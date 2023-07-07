@@ -2,7 +2,7 @@ import { useReducer } from "react";
 import { useContext } from "react";
 import { createContext } from "react";
 import { toast } from "react-hot-toast";
-import { addBookmarkService, editUserService, followUserService, getAllBookmarksService, getAllUserPostsService, getAllUsersService, removeBookmarkService, unfollowUserService } from "../services/dataFetchServices";
+import { addBookmarkService, editUserService, followUserService, getAllBookmarksService, getAllUsersService, removeBookmarkService, unfollowUserService } from "../services/dataFetchServices";
 import { useState } from "react";
 import { useAuthContext } from "./authContext";
 import { useEffect } from "react";
@@ -58,10 +58,9 @@ export const UserContextProvider = ({children}) => {
     }
 
 
-    const followUserHandler = async (userID) =>{
+    const followUserHandler = async (followUserID) =>{
         try{
-            const {data, status} = await followUserService(userID, authState?.token);
-
+            const {data, status} = await followUserService(followUserID, authState?.token);
             if(status === 200 || status === 201){
                 userDispatch({type:"UPDATE_USER_DATA", payload: data?.user});
                 userDispatch({type:"UPDATE_USER_DATA", payload: data?.followUser});
@@ -74,10 +73,9 @@ export const UserContextProvider = ({children}) => {
         }
     }
 
-    const unfollowUserHandler = async (userID) =>{
+    const unfollowUserHandler = async (followUserID) =>{
         try{
-            const {data, status} = await unfollowUserService(userID, authState?.token);
-
+            const {data, status} = await unfollowUserService(followUserID, authState?.token);
             if(status === 200 || status === 201){
                 userDispatch({type:"UPDATE_USER_DATA", payload: data?.user});
                 userDispatch({type:"UPDATE_USER_DATA", payload: data?.followUser});

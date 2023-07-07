@@ -3,7 +3,7 @@ export const userReducer = (state, {type, payload}) => {
         case"GET_ALL_USERS":
         return {...state, users : payload};
         case"UPDATE_USER_DATA":
-        return state.users.map((user) => user._id === payload._id ? {...payload} : user);
+        return {...state, users: state?.users?.map((user) => user._id === payload._id ? {...payload} : user)}
         case"GET_ALL_BOOKMARKS":
         return{...state, bookmarks : payload};
         case"ADD_BOOKMARK":
