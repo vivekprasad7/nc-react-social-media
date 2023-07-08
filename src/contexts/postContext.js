@@ -58,6 +58,7 @@ export const PostContextProvider = ({ children }) => {
         setIsLoading(true);
         try{
             const {data, status} = await getAllUserPostsService(username);
+            console.log("getalluserposts", data)
             if(status === 200 || status === 201){
                 postDispatch({type:"GET_ALL_USER_POSTS", payload: data?.posts});
                 setIsLoading(false);

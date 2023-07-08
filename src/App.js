@@ -44,7 +44,7 @@ function App() {
 
       <Route element={<RequiresAuth/>}>
       <Route path="/" element={< Home/>} />
-      <Route path="/profile" element={< Profile/>} />
+      <Route path="/profile/:username" element={< Profile/>} />
       <Route path="/explore" element={< Explore/>} />
       <Route path="/bookmarks" element={< Bookmarks/>} />
       <Route path="/post/:postID" element={< PostDetails/>} />

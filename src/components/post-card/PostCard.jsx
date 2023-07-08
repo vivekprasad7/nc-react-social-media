@@ -7,6 +7,7 @@ import { EditPost } from '../edit-post/EditPost'
 import { NewComment } from '../new-comment/NewComment'
 import { useNavigate } from 'react-router-dom'
 import { useUserContext } from '../../contexts/userContext'
+import { useEffect } from 'react'
 
 
 export const PostCard = ({postItem}) => {
@@ -21,6 +22,12 @@ export const PostCard = ({postItem}) => {
   const navigate = useNavigate();
 
   const [showCommentModal, setShowCommentModal] = useState(false);
+  const [userInfo, setUserInfo] = useState({});
+
+  useEffect(() => {
+    setUserInfo(userState?.users?.find((user) => user.username === username));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [username, userState]);
 
 
   const isPostLikedByUser = () => {
@@ -53,11 +60,14 @@ export const PostCard = ({postItem}) => {
             </div>
 
             
-            <div className='post-profile-img'>
-                <i class="fa fa-circle"></i>
+            <div onClick={() =>navigate(`/profile/${username}`)
+              } className='post-profile-img'>
+               <img  src={userInfo?.profilePic}  alt="avatar" className='profile-pic'/>
+
             </div>
-            <div className='post-card-uname'>
-                <p>Vivek Prasad</p>
+            <div onClick={() =>navigate(`/profile/${username}`)
+              } className='post-card-uname'>
+                <p></p>
                 <small>@{username}</small>
             </div>
             </div>
