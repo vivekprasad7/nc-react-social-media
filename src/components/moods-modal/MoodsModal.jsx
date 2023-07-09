@@ -3,7 +3,6 @@ import "./MoodsModal.css"
 import { Modal } from '@mui/material'
 import { useState } from 'react'
 import { moods } from '../../backend/db/mood'
-import { setSelectionRange } from '@testing-library/user-event/dist/utils'
 import { useAuthContext } from '../../contexts/authContext'
 import { toast } from 'react-hot-toast'
 
@@ -30,23 +29,26 @@ export const MoodsModal = ({showMoodModal, setShowMoodModal, userBio, setUserBio
                     </div>
 
                     <div className='mood-icons'>
-                      {
-                        moods?.filter((img) => img !== authState?.user?.profilePic)
-                        .map((moodImg) => {
+                      {/* {
+                        moods?.filter((img) => img !== authState?.user?.profilePic).map((moodImg) => {
                           return(
                             <div >
                               <img className='mood-img' src={moodImg} alt="mood" onClick={() => setMood(moodImg)}/>
                             </div>
                           )
                         })
+                      } */}
+
+                      {
+                        moods?.map((img) => (<div><img className='mood-img' onClick={() => setMood(img)}src={img} /></div>))
                       }
 
                     </div>
 
-                    <button
+                    <button className='mood-btn'
                     onClick={() => {
-                      if(mood.length === 0){
-                        toast.warning("Pick Your Mood.")
+                      if(mood?.length === 0){
+                        toast.error("Pick Your Mood.")
                       } else {
                         setUserBio({...userBio, profilePic : mood})
                         setShowMoodModal(false);
