@@ -8,7 +8,7 @@ export const Loading = () => {
   return (
     <div className='animation-container'>
     <div className="loader">
-    <Lottie animationData={loading} />
+    <Lottie animationData={loading} style={{fontSize:"30px"}} />
     </div>
     </div>
       
