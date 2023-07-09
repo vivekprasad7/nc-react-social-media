@@ -16,7 +16,7 @@ export const PostCard = ({postItem}) => {
   const {authState} = useAuthContext();
   const {content, createdAt, _id, likes, comments,  postImg, postAlt, username} = postItem
 
-  const {likePostHandler, dislikePostHandler, deletePostHandler} = usePostContext();
+  const { likePostHandler, dislikePostHandler, deletePostHandler} = usePostContext();
   const {userState, addBookmarkHandler, removeBookmarkHandler} = useUserContext();
   const [showEditModal, setShowEditModal] = useState(false);
   const navigate = useNavigate();

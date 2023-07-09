@@ -1,4 +1,4 @@
-export const sortedPosts = (posts, sortType) => {
+export const sortPostsBy = (posts, sortType) => {
 
     if(sortType === "TRENDING"){
        return posts.sort((a,b) => b.likes.likeCount - a.likes.likeCount)

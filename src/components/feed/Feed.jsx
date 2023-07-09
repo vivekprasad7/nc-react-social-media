@@ -3,8 +3,11 @@ import "./Feed.css"
 import { useNavigate } from 'react-router-dom'
 import { PostCard } from '../post-card/PostCard';
 import { Loading } from '../loader/loading';
+import { usePostContext } from '../../contexts/postContext';
 
 export const Feed = ({pageTitle, showBackBtn, feedPosts, isLoading}) => {
+
+  const {postDispatch} = usePostContext();
 
   const navigate = useNavigate();
 
@@ -26,8 +29,8 @@ export const Feed = ({pageTitle, showBackBtn, feedPosts, isLoading}) => {
             </div> :  <div className="nav-icon">
             <i class="fa-solid fa-caret-down icon-circle"></i>
             <ul className='nav-dropdown'>
-              <li className='side-nav'>Trending</li>
-              <li className='side-nav'>  Latest</li>
+              <li onClick={() => postDispatch({type: "SORT_POSTS_BY", payload: "TRENDING"})} className='side-nav'>Trending</li>
+              <li onClick={() => postDispatch({type: "SORT_POSTS_BY", payload: "LATEST"})} className='side-nav'>  Latest</li>
             </ul>
                
             </div>
