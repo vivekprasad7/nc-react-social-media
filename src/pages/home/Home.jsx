@@ -16,6 +16,8 @@ export const Home = () => {
     || post?.username === authState?.user?.username
   )
 
+  
+
   return (
     <div className='home-page'>
         <Sidebar/>
