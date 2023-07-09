@@ -32,7 +32,7 @@ export const ProfileCard = ({ userDetails, isUserLoading }) => {
                         }
 
                         <div className='profile-img'>
-                            <img  className='card-pp' src={userDetails?.profilePic}/>
+                            <img  className='card-pp' src={userDetails?.profilePic} alt="profile-pic"/>
                             {/* <i class="fa fa-circle"></i> */}
                         </div>
                         <div className='profile-bio'>

@@ -33,7 +33,7 @@ export const EditProfile = ({ userDetails, showEditBioModal, setShowEditBioModal
 
     return (
         <>{
-            showMoodModal && (<MoodsModal setUserBio={setUserBio} showMoodModal={showMoodModal} setShowMoodModal={setShowMoodModal} />)
+            showMoodModal && (<MoodsModal userBio={userBio} setUserBio={setUserBio} showMoodModal={showMoodModal} setShowMoodModal={setShowMoodModal} />)
         }
             <Modal
                 open={showEditBioModal}
