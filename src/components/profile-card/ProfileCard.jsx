@@ -32,7 +32,8 @@ export const ProfileCard = ({ userDetails, isUserLoading }) => {
                         }
 
                         <div className='profile-img'>
-                            <i class="fa fa-circle"></i>
+                            <img  className='card-pp' src={userDetails?.profilePic}/>
+                            {/* <i class="fa fa-circle"></i> */}
                         </div>
                         <div className='profile-bio'>
 
@@ -54,8 +55,8 @@ export const ProfileCard = ({ userDetails, isUserLoading }) => {
                             </div>
 
                             <div className='profile-status'>
-                                {userDetails?.status ? <p><b>{userDetails?.status}</b></p> : null}
-                                {userDetails?.website ? <p> <i class="fa-solid fa-link"></i> {userDetails?.website}</p> : null}
+                                {userDetails?.status ? <p className='pc-status'><b>{userDetails?.status}</b></p> : null}
+                                {userDetails?.website ? <p className='pc-website'> <i class="fa-solid fa-link"></i> {userDetails?.website}</p> : null}
                             </div>
 
                             <div className='profile-links'>

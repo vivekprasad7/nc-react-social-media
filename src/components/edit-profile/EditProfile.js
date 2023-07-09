@@ -3,12 +3,12 @@ import React from 'react'
 import "./EditProfile.css"
 import { useState } from 'react';
 import { useAuthContext } from '../../contexts/authContext';
-import { usePostContext } from '../../contexts/postContext';
 import { MoodsModal } from '../moods-modal/MoodsModal';
+import { useUserContext } from '../../contexts/userContext';
 
 export const EditProfile = ({ userDetails, showEditBioModal, setShowEditBioModal }) => {
     const { authState } = useAuthContext();
-    const { editUserHandler } = usePostContext();
+    const { editUserHandler } = useUserContext();
     const [profilePic, setProfilePic] = useState(null);
     const [showMoodModal, setShowMoodModal] = useState(false);
 
@@ -27,7 +27,7 @@ export const EditProfile = ({ userDetails, showEditBioModal, setShowEditBioModal
 
     const submitHandler = (e) => {
         e.preventDefault();
-        setUserBio(userBio);
+        editUserHandler(userBio);
         setShowEditBioModal(false);
     }
 
@@ -58,7 +58,7 @@ export const EditProfile = ({ userDetails, showEditBioModal, setShowEditBioModal
                             className='ep-pp'
                         />
 
-                        <div>
+                        <div className='eb-buttons'>
                             <button
                                 onClick={(e) => {
                                     e.preventDefault();
@@ -68,7 +68,7 @@ export const EditProfile = ({ userDetails, showEditBioModal, setShowEditBioModal
                             >What's Your Mood?</button>
 
                             <label>
-                                <p>Edit Profile Pic</p>
+                                <p className='eb-edit-pic'>Edit Profile Pic</p>
                                 <input
                                     className='hidden'
                                     type='file'
@@ -83,8 +83,8 @@ export const EditProfile = ({ userDetails, showEditBioModal, setShowEditBioModal
                             </label>
                         </div>
 
-                        <div>
-                            <div className='form-unit'>
+                        <div className='eb-inputs'>
+                            <div className='eb-form-unit'>
                                 <label>
                                     First Name
                                 </label>
@@ -96,7 +96,7 @@ export const EditProfile = ({ userDetails, showEditBioModal, setShowEditBioModal
                                 />
                             </div>
 
-                            <div className='form-unit'>
+                            <div className='eb-form-unit'>
                                 <label>
                                     Last Name
                                 </label>
@@ -108,7 +108,7 @@ export const EditProfile = ({ userDetails, showEditBioModal, setShowEditBioModal
                                 />
                             </div>
 
-                            <div className='form-unit'>
+                            <div className='eb-form-unit'>
                                 <label>
                                     Status
                                 </label>
@@ -120,7 +120,7 @@ export const EditProfile = ({ userDetails, showEditBioModal, setShowEditBioModal
                                 />
                             </div>
 
-                            <div className='form-unit'>
+                            <div className='eb-form-unit'>
                                 <label>
                                     Website
                                 </label>
@@ -135,12 +135,12 @@ export const EditProfile = ({ userDetails, showEditBioModal, setShowEditBioModal
 
                         </div>
 
-                        <div>
-                            <input className='' value="Save" type="submit"/>
-                            <button onClick={() => {
+                        <div className='eb-submit-btn'>
+                            <input className='eb-submit-input' value="Save" type="submit"/>
+                            {/* <button onClick={() => {
                             // editPostHandler(editPostInput?._id, editPostInput);
                             setShowEditBioModal(false);
-                        }} className='ep-btn'>Save</button>
+                        }} className='ep-btn'>Save</button> */}
                         </div>
 
 

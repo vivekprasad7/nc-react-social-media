@@ -79,6 +79,12 @@
     background-color: #1DA1F2; */
 }
 
+.card-pp{
+    border-radius: 50%;
+    width:100px;
+    height: 100px;
+    object-fit: cover;
+}
 
 
 
@@ -111,4 +117,13 @@
 
 .profile-link-unit p{
     margin-top: 0px;
+}
+
+.pc-status{
+    color:black;
+}
+
+.pc-website{
+    font-size: 17px;
+    color: gray;
 }
