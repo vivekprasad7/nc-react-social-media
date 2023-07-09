@@ -1,11 +1,13 @@
 import React from 'react'
 import "./Sidebar.css"
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../../contexts/authContext'
 import { getAllPostsService, getSinglePostService } from '../../services/dataFetchServices'
 
 export const Sidebar = () => {
   const{displayProps, setDisplayProps} = useAuthContext();
+  const {authState} = useAuthContext();
+  const navigate = useNavigate();
   return (
     <div className='sidebar'>
 
@@ -41,10 +43,10 @@ export const Sidebar = () => {
         </NavLink>
         <NavLink
           className="side-nav"
-          to="/profile"
+          to={`/profile/${authState?.user?.username}`}
         >
           <i className="fa-regular fa-user"></i>{" "}
-          <span className="nav-title">Profile</span>
+          <span  className="nav-title">Profile</span>
         </NavLink>
         </div>
 

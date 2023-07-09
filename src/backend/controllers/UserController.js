@@ -34,7 +34,7 @@ export const getUserHandler = function (schema, request) {
     );
   }
 };
-
+ 
 
 /**
  * This handler handles updating user details.

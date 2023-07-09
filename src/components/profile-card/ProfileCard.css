@@ -20,6 +20,12 @@
 
 .profile-status{
     text-align: center;
+    padding:1rem;
+}
+
+.profile-status p{
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .profile-title {
@@ -50,26 +56,27 @@
     color:black;
     background-color: white;
     /* border: solid 1px orange; */
-    border: solid 2px #1DA1F2;
+    /* border: solid 2px #1DA1F2; */
     font-family: Poppins;
     letter-spacing: 0.9px;
     font-weight: 500;
     border-radius:20px;
-    padding:0.6rem;
-    width:100px;
+    padding:0.8rem 1.2rem;
+    width:max-content;
     cursor: pointer;
 }
 
 .profile-follow-btn{
     color:white;
     background-color: #1DA1F2;
+    /* background-color: orange; */
 }
 
 .profile-follow-btn:hover{
     color:white;
-    background-color: black;
+    /* background-color: black;
     background-color: red;
-    background-color: #1DA1F2;
+    background-color: #1DA1F2; */
 }
 
 
@@ -95,6 +102,11 @@
 
 .profile-link-unit h3{
     margin-bottom: 0px;
+}
+
+.profile-link-unit h3:hover{
+    color:orange;
+    cursor: pointer;
 }
 
 .profile-link-unit p{

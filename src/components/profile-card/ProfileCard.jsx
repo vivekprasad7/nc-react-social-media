@@ -1,87 +1,85 @@
 import React from 'react'
 import "./ProfileCard.css"
-import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
 import { useUserContext } from '../../contexts/userContext';
 import { useState } from 'react';
-import axios from 'axios';
 import { usePostContext } from '../../contexts/postContext';
 import { useAuthContext } from '../../contexts/authContext';
+import { Loading } from '../loader/loading';
 
-export const ProfileCard = () => {
+export const ProfileCard = ({userDetails, isUserLoading}) => {
 
-    const {username} = useParams();
     const {userState, followUserHandler, unfollowUserHandler} = useUserContext();
 
-    const {authState, logoutHandler} = useAuthContext();
-    const {postState, getAllUserPosts} = usePostContext();
-    const [userDetails, setUserDetails] = useState({});
+    const {authState} = useAuthContext();
+    const {postState} = usePostContext();
     const [showEditBioModal, setShowEditBioModal] = useState(false);
     const [showEditMoodModal, setShowEditMoodModal] = useState(false);
-    const [isUserLoading, setIsUserLoading] = useState(false);
 
-    const getUserDetails = async () => {
-        // setIsUserLoading(true);
-        try{
-            const {data, status} = await axios({
-                method:"GET",
-                url:`/api/users/${username}`,
-            })
-            console.log("getuserdetails", data)
-            if(status === 200 || status === 201){
-                setUserDetails(data?.user);
-                getAllUserPosts(username);
-                setIsUserLoading(false);
-            }
-        } catch(e){
-            console.error(e);
-            setIsUserLoading(false);
-        }
-    }
- 
-    useEffect(() => {
-        getUserDetails();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [username, userState, postState?.posts]);
-    return (
+
+    const isFollowedByUser = 
+    (userID) => userState?.users?.find((user) => user?._id === userID)?.followers?.some((user) => user?._id === authState?.user?._id);
+
+  return(
+    <>
+
+   { isUserLoading ? <Loading/> :
+
+        (
         <main className='profile-card'>
-            <div className='profile-img'>
+
+         
+                <div className='profile-img'>
                 <i class="fa fa-circle"></i>
             </div>
             <div className='profile-bio'>
 
                 <div className='profile-title'>
-                    <h3 className='profile-name'>{`${userDetails?.firstName}` +`${userDetails?.lastName}`}</h3>
-                    <p className='profile-username'>@{username}</p>
-                    <button className='profile-follow-btn'>Follow</button>
+                    <h3 className='profile-name'>{`${userDetails?.firstName} ${userDetails?.lastName}`}</h3>
+                    <p className='profile-username'>@{`${userDetails?.username}`}</p>
+
+
+                    {    userDetails?.username === authState?.user?.username ? 
+
+                         (<button className='profile-follow-btn'>Edit</button>
+                         ) :
+
+                        (isFollowedByUser(userDetails?._id) ? 
+                        (<button onClick={()=> unfollowUserHandler(userDetails?._id) } className='profile-follow-btn'>Unfollow</button>)
+                        : (<button onClick={()=> followUserHandler(userDetails?._id) } className='profile-follow-btn'>Follow</button>)) 
+                        
+                    }
                 </div>
 
-                <div onClick={() => getUserDetails()} className='profile-status'>
-                    <p>I am awesome.</p>
-                </div>
+                <div className='profile-status'>
+                    {userDetails?.status ? <p><b>{userDetails?.status}</b></p> : null }
+                    {userDetails?.website ? <p> <i class="fa-solid fa-link"></i> {userDetails?.website}</p> : null }
+                 </div>
 
                 <div className='profile-links'>
                    
 
                     <div className='profile-link-unit'>
-                        <h3>10</h3>
+                        <h3>{userDetails?.following?.length}</h3>
                         <p>Following</p>
                     </div>
                     <div className='profile-link-unit'>
-                        <h3>2</h3>
+                        <h3>{postState?.userPosts?.length}</h3>
                         <p>Posts</p>
                     </div>
 
                     <div className='profile-link-unit'>
-                        <h3>10</h3>
+                        <h3>{userDetails?.followers?.length}</h3>
                         <p>Followers</p>
                     </div>
 
                 </div>
 
             </div>
-
+                
+          
 
         </main>
+        ) }
+        </>
     )
 }

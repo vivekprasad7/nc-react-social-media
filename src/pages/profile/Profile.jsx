@@ -15,12 +15,11 @@ export const Profile = () => {
     const navigate = useNavigate();
 
     const {username} = useParams();
-    const {authState, logoutHandler} = useAuthContext();
+    const {authState} = useAuthContext();
     const {postState, getAllUserPosts} = usePostContext();
-    const {userState, followUserHandler, unfollowUserHandler} = useUserContext();
-    const {userDetails, setUserDetails} = useState({});
-    const [showEditBioModal, setShowEditBioModal] = useState(false);
-    const [showEditMoodModal, setShowEditMoodModal] = useState(false);
+    const {userState} = useUserContext();
+    const [userDetails, setUserDetails] = useState({});
+
     const [isUserLoading, setIsUserLoading] = useState(false);
 
     const getUserDetails = async () => {
@@ -30,6 +29,7 @@ export const Profile = () => {
                 method:"GET",
                 url:`/api/users/${username}`,
             })
+            console.log("getuserdetails", data)
             if(status === 200 || status === 201){
                 setUserDetails(data?.user);
                 getAllUserPosts(username);
@@ -44,11 +44,10 @@ export const Profile = () => {
     useEffect(() => {
         getUserDetails();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [username, userState, postState?.post]);
+    }, [username, userState, postState?.posts]);
 
 
-    const isFollowedByUser = (userID) => userState?.users?.find((user) => user._id === userID)
-    ?.followers.some((user) => user._id === authState?.user?._id);
+
 
 
   return (
@@ -70,7 +69,7 @@ export const Profile = () => {
       
         </div>
 
-        <ProfileCard userDetails={userDetails}/>
+        <ProfileCard userDetails={userDetails} isUserLoading={isUserLoading}/>
 
     </div>
         <Widgets/>
