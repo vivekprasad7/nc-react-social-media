@@ -28,7 +28,7 @@ export const ProfileCard = ({ userDetails, isUserLoading }) => {
 
                     <main className='profile-card'>
                         {showEditBioModal && (
-                            <EditProfile showEditBioModal={showEditBioModal} setShowEditBioModal={setShowEditBioModal} />)
+                            <EditProfile userDetails={userDetails} showEditBioModal={showEditBioModal} setShowEditBioModal={setShowEditBioModal} />)
                         }
 
                         <div className='profile-img'>
