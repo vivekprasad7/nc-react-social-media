@@ -10,6 +10,7 @@ import { useUserContext } from '../../contexts/userContext'
 import { useState } from 'react'
 import axios from 'axios'
 import { useEffect } from 'react'
+import { PostCard } from '../../components/post-card/PostCard'
 
 export const Profile = () => {
     const navigate = useNavigate();
@@ -70,6 +71,15 @@ export const Profile = () => {
         </div>
 
         <ProfileCard userDetails={userDetails} isUserLoading={isUserLoading}/>
+
+        {
+            postState?.userPosts?.map((post) => {
+
+                return(
+                    <PostCard postItem={post}/>
+                )
+            })
+        }
 
     </div>
         <Widgets/>
