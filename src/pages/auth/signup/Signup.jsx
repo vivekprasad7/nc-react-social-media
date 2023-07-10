@@ -46,7 +46,10 @@ export const Signup = () => {
             <form onSubmit={signupSubmitHandler} className='signup-form'>
                 <div className='form-flex-display'>
                 <div className='form-unit'>
-                    <label>First Name: <input 
+                    <label>First Name:</label>
+
+                    <div className='input-field'>
+                    <input 
                     required
                     id="firstName" 
                     value={signupDetails.firstName}  
@@ -56,10 +59,15 @@ export const Signup = () => {
                     setSignupDetails({...signupDetails, firstName: e.target.value})
                     }
                     
-                    /></label>
+                    />
+                    </div>
+                    
                 </div>
                 <div className='form-unit'>
-                <label>Last Name: <input 
+                <label>Last Name:</label>
+                <div className='input-field'>
+
+                 <input 
                     required
                     id="lastName" 
                     value={signupDetails.lastName}  
@@ -69,13 +77,17 @@ export const Signup = () => {
                     setSignupDetails({...signupDetails, lastName: e.target.value})
                     }
                     
-                    /></label>
+                    />
+</div>
                 </div>
                 </div>
 
                 <div className='form-block-display'>
                 <div className='form-unit'>
-                <label>Email: <input 
+                <label>Email: </label> 
+                <div className='input-field'>
+
+                <input 
                     required
                     id="email" 
                     value={signupDetails.email}  
@@ -85,13 +97,17 @@ export const Signup = () => {
                     setSignupDetails({...signupDetails, email: e.target.value})
                     }
                     
-                    /></label>
+                    />
+</div>
                 </div>
                 </div>
 
                 <div className='form-block-display'>
                 <div className='form-unit'>
-                <label>User Name: <input 
+                <label>User Name: </label>
+                <div className='input-field'>
+
+                 <input 
                     required
                     id="username" 
                     value={signupDetails.username}  
@@ -101,14 +117,17 @@ export const Signup = () => {
                     setSignupDetails({...signupDetails, username: e.target.value})
                     }
         
-                    /></label>
+                    />
+</div>
+                
                    
                 </div>
                 </div>
 
                 <div className='form-block-display'>
                 <div className='form-unit'>
-                <label>Password: 
+                <label>Password:  </label>
+                <div className='input-field'>
                 <input
                 className='signup-pwd-input'
                 type={isPasswordVisible ? "text" : "password"}
@@ -133,7 +152,9 @@ export const Signup = () => {
                 className="fa-regular fa-eye pwd-eye"
               ></i>
             )}  
-                </label>
+
+</div>
+               
 
                 </div>
                 </div>
@@ -142,7 +163,7 @@ export const Signup = () => {
 
                 <div className='form-block-display'>
                 <div className='form-unit'>
-                    <button type="submit" value="Sign Up">Sign Up!</button>
+                    <button className='login-btn' type="submit" value="Sign Up">Sign Up!</button>
                 </div>
                 </div>
 
