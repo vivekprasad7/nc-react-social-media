@@ -3,6 +3,9 @@ import "./Login.css"
 import { useAuthContext } from '../../../contexts/authContext'
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import fictionCat from "../../../assets/animations/fictionCat.json"
+import Lottie from "lottie-react"
+
 
 export const Login = () => {
 
@@ -31,6 +34,10 @@ export const Login = () => {
   return (
     <div className='login-page'>
       <div className='login-wp-container'>
+      <div className="cat">
+    <Lottie animationData={fictionCat} />
+    </div>
+    <h3 className='slogan'><span className='white'>#Be</span>Real</h3>
 
       </div>
       <div className='login-form-container'>

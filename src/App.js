@@ -23,7 +23,7 @@ function App() {
       <div className='blur'></div>
 
 
-      <nav className='fake-nav' style={{display:""}}>
+      <nav className='fake-nav' style={{display:"none"}}>
       <NavLink to="/mockman">Mockman</NavLink>
       <NavLink to="/register">Register</NavLink>
       <NavLink to="/signup">Signup</NavLink>

@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import "./Signup.css"
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../../contexts/authContext';
+import fictionCat from "../../../assets/animations/fictionCat.json"
+import Lottie from "lottie-react"
 
 export const Signup = () => {
 
@@ -39,6 +41,10 @@ export const Signup = () => {
   return (
     <div className='signup'>
         <div className='signup-wp-container'>
+        <div className="cat">
+    <Lottie animationData={fictionCat} />
+    </div>
+    <h3 className='slogan'><span className='white'>#Be</span>Authentic</h3>
 
         </div>
         <div className='signup-form-container'>

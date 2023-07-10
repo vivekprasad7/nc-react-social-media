@@ -6,6 +6,11 @@
 .signup-wp-container{
     background-color: black;
     flex:0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: black;
 }
 
 .signup-form-container{

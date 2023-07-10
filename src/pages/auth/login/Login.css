@@ -3,7 +3,23 @@
     height: 100vh;
 }
 
+.cat{
+    width:400px;
+}
+
+.slogan{
+    color: orange;
+}
+
+.white{
+    color:white;
+}
+
 .login-wp-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     background-color: black;
     flex:0.5;
 }

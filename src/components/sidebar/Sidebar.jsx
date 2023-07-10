@@ -12,7 +12,7 @@ export const Sidebar = () => {
     <div className='sidebar'>
 
         <div className='site-title'>
-            <h3>cardz.</h3>
+            <h3>cardz<span>.</span></h3>
         </div>
 
         <div className='sidebar-menu'>
