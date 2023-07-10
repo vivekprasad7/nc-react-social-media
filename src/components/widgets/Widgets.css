@@ -23,8 +23,9 @@
 .widgets_input:hover{
     background-color: #e8f5fe;
     background-color:rgb(255, 226, 226);
-
+    background-color:rgb(255, 224, 187);
 }
+
 
 .widgets_input > input{
     border:none;

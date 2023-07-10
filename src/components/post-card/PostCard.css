@@ -12,8 +12,15 @@
     align-items: center;
 }
 
-.post-profile-img{
-    font-size: 50px;
+.post-profile-img img{
+    width:80px;
+    height:80px
+}
+
+.pc-flex-unit{
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -55,6 +62,7 @@
 .pc-content img{
     max-width: 500px;
     text-align: center;
+    display: block;
 }
 
 

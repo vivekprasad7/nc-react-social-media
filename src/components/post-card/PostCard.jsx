@@ -50,7 +50,11 @@ export const PostCard = ({postItem}) => {
       {showCommentModal && (<NewComment showCommentModal={showCommentModal} setShowCommentModal={setShowCommentModal} postID={_id}/>)}
          <div className='post-card-profile'>
 
-         <div className="pc-edit-icon">
+
+          {
+            authState?.user?.username === username ? 
+            (  
+                <div className="pc-edit-icon">
             <i class="fa-solid fa-ellipsis icon-circle"></i>
             <ul className='pc-dropdown'>
               <li onClick={() => setShowEditModal(!showEditModal)} className='side-nav'>Edit</li>
@@ -58,8 +62,12 @@ export const PostCard = ({postItem}) => {
             </ul>
                
             </div>
+            ) : (  null)
+          }
 
-            
+     
+
+            <div className='pc-flex-unit'>
             <div onClick={() =>navigate(`/profile/${username}`)
               } className='post-profile-img'>
                <img  src={userInfo?.profilePic}  alt="avatar" className='profile-pic'/>
@@ -67,10 +75,12 @@ export const PostCard = ({postItem}) => {
             </div>
             <div onClick={() =>navigate(`/profile/${username}`)
               } className='post-card-uname'>
-                <p></p>
+                <p>{  userInfo?.firstName +" " + userInfo?.lastName}</p>
                 <small>@{username}</small>
             </div>
             </div>
+           
+             </div>
 
             <div className='pc-content'>
                 <p onClick={() => navigate(`/post/${_id}`)}>{content}</p>
