@@ -28,6 +28,9 @@ export const UserContextProvider = ({children}) => {
         setUserLoading(true);
         try{
             const {data, status} = await getAllUsersService();
+            console.log("fr", data)
+
+
 
             if(status === 200 || status === 201){
                 userDispatch({type:"GET_ALL_USERS", payload: data?.users});
@@ -45,6 +48,8 @@ export const UserContextProvider = ({children}) => {
     const editUserHandler = async(userData) => {
         try{
             const {data, status} = await editUserService(userData, authState?.token);
+            console.log("followUser", data)
+
 
             if(status === 201){
                 userDispatch({type:"UPDATE_USER_DATA", payload: data?.user});
@@ -61,11 +66,12 @@ export const UserContextProvider = ({children}) => {
     const followUserHandler = async (followUserID) =>{
         try{
             const {data, status} = await followUserService(followUserID, authState?.token);
+            console.log("followUser", data)
             if(status === 200 || status === 201){
                 userDispatch({type:"UPDATE_USER_DATA", payload: data?.user});
                 userDispatch({type:"UPDATE_USER_DATA", payload: data?.followUser});
                 authDispatch({type:"SET_USER", payload: data?.user});
-                toast.success(`Followed @${data?.followUser.username}`);
+                toast.success(`Followed @${data?.followUser?.username}`);
             }
         } catch(e){
             console.error(e);
@@ -76,11 +82,13 @@ export const UserContextProvider = ({children}) => {
     const unfollowUserHandler = async (followUserID) =>{
         try{
             const {data, status} = await unfollowUserService(followUserID, authState?.token);
+            console.log("followUser", data)
+
             if(status === 200 || status === 201){
                 userDispatch({type:"UPDATE_USER_DATA", payload: data?.user});
                 userDispatch({type:"UPDATE_USER_DATA", payload: data?.followUser});
                 authDispatch({type:"SET_USER", payload: data?.user});
-                toast.success(`Unfollowed @${data?.followUser.username}`);
+                toast.success(`Unfollowed @${data?.followUser?.username}`);
             }
         } catch(e){
             console.error(e);
