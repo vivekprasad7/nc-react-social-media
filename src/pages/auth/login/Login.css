@@ -27,11 +27,18 @@
     padding:10px;
 }
 
-.login-pwd-input{
-    position: relative;
+.login-btn{
+    width: 100%;;
 }
 
+.input-field{
+    width:100%;
+    border:solid 1px gray;
+    border-radius: 20px;
+    padding:0.1rem;
+}
 
-.pwd-eye{
-    position: absolute;
+.input-field input{
+    width:90%;
+    border:none;
 }

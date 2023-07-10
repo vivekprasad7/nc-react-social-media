@@ -6,16 +6,16 @@ import { useState } from 'react';
 
 export const Login = () => {
 
-  const {loginHandler} = useAuthContext();
+  const { loginHandler } = useAuthContext();
   const navigate = useNavigate();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
-  const guestUserCreds = {username:"aryashah", password:"aryashah123"};
-  
+  const guestUserCreds = { username: "aryashah", password: "aryashah123" };
+
 
   const [loginDetails, setLoginDetails] = useState({
-    username:"",
-    password:"",
+    username: "",
+    password: "",
   });
 
   const loginSubmitHandler = (e) => {
@@ -24,101 +24,114 @@ export const Login = () => {
   }
 
 
-  const {username, password} = loginDetails;
+  const { username, password } = loginDetails;
 
 
 
   return (
     <div className='login-page'>
-    <div className='login-wp-container'>
+      <div className='login-wp-container'>
 
-    </div>
-    <div className='login-form-container'>
-        
+      </div>
+      <div className='login-form-container'>
+
         <form onSubmit={loginSubmitHandler} className='login-form'>
 
           <h1 onClick={() => loginHandler(guestUserCreds)}>Login </h1>
-          
 
-            <div className='form-block-display'>
+
+          <div className='form-block-display'>
+
             <div className='form-unit'>
-                <label>Username: 
-                <input
-                 required 
-                 id="username"
-                 placeholder='aryashah'
-                 value={loginDetails.username}
-                 name="username"
-                 onChange={(e) => setLoginDetails({
+            <label>Username: </label>
+
+              <div className='input-field'>
+              <input
+                required
+                id="username"
+                placeholder='aryashah'
+                value={loginDetails.username}
+                name="username"
+                onChange={(e) => setLoginDetails({
                   ...loginDetails,
                   username: e.target.value,
-                 })}
+                })}
 
-                /></label>
+              />
+              </div>
+             
             </div>
-            </div>
+          </div>
 
-            <div className='form-block-display'>
+          <div className='form-block-display'>
             <div className='form-unit'>
-            <label>Password: 
-                <input
+
+              <label>Password: </label>
+
+              <div className='input-field'>
+              <input
                 className='login-pwd-input'
                 type={isPasswordVisible ? "text" : "password"}
-                 required 
-                 id="password"
-                 placeholder={isPasswordVisible ? "password" : "********"}
-                 value={loginDetails.password}
-                 name="password"
-                 onChange={(e) => setLoginDetails({
+                required
+                id="password"
+                placeholder={isPasswordVisible ? "password" : "********"}
+                value={loginDetails.password}
+                name="password"
+                onChange={(e) => setLoginDetails({
                   ...loginDetails,
                   password: e.target.value,
-                 })}
-                />
-                {isPasswordVisible ? (
-              <i
-                onClick={() => setIsPasswordVisible((prev) => !prev)}
-                className="fa-regular fa-eye-slash pwd-eye"
-              ></i>
-            ) : (
-              <i
-                onClick={() => setIsPasswordVisible((prev) => !prev)}
-                className="fa-regular fa-eye pwd-eye"
-              ></i>
-            )}  
-                </label>
+                })}
+              />
+              {isPasswordVisible ? (
+                <i
+                  onClick={() => setIsPasswordVisible((prev) => !prev)}
+                  className="fa-regular fa-eye-slash pwd-eye"
+                ></i>
+              ) : (
+                <i
+                  onClick={() => setIsPasswordVisible((prev) => !prev)}
+                  className="fa-regular fa-eye pwd-eye"
+                ></i>
+              )}
+
+              </div>
+              
+
             </div>
-            </div>
+          </div>
 
 
-            <div className='form-block-display'>
+          <div className='form-block-display'>
             <div className='form-unit'>
-                <button type="submit" value="Log In">Login</button>
+              <button className='login-btn'
+                type="submit" value="Log In">Login</button>
             </div>
-            </div>
+          </div>
 
-            <div className='form-block-display'>
+          <div className='form-block-display'>
             <div className='form-unit'>
-                <button 
+              <button
+                className='login-btn'
                 onClick={(e) => {
                   e.preventDefault();
                   setLoginDetails(guestUserCreds);
                   loginHandler(guestUserCreds);
                 }}
-                >Login as Guest</button>
+              >Login as Guest</button>
             </div>
-            </div>
+          </div>
 
-            <div className='form-block-display'>
-           <p>Don't have an Account? <Link to="/signup">Sign Up</Link></p>
-            </div>
+          <div className='form-block-display'>
+            <p>Don't have an Account? <Link to="/signup">Sign Up</Link></p>
+          </div>
 
 
-           
+
 
         </form>
 
-    </div>
+      </div>
 
-</div>
+    </div>
   )
 }
