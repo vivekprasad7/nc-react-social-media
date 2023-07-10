@@ -46,7 +46,7 @@ export const PostDetails = () => {
 
         {/* {   isLoading ? (<Loading/> ): */}
 
-        ( <div>
+         <div>
           <PostCard postItem={postState?.post} />
           <div className='comments-card'>
             <h3>Comments</h3>
@@ -100,7 +100,7 @@ export const PostDetails = () => {
 
           </div>
         </div>
-        )
+        
 
 
 

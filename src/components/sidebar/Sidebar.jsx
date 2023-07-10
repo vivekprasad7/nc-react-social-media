@@ -54,9 +54,7 @@ export const Sidebar = () => {
           <i onClick={() => setDisplayProps(!displayProps)} class="fa-solid fa-bolt icon-circle"></i>
           </div>
 
-          <div className='create-post-icon'>
-          <i onClick={() => getSinglePostService()} class="fa-solid fa-heart icon-circle"></i>
-          </div>
+       
 
 
     </div>
