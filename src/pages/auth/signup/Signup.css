@@ -1,5 +1,6 @@
 .signup{
     display: flex;
+    flex-wrap: wrap;
     height: 100vh;
 }
 
@@ -30,4 +31,11 @@
     display: flex;
     flex-direction: column;
     padding:10px;
+}
+
+@media (width<768px) {
+    .signup{
+        flex-direction: column;
+        height: fit-content;
+    }
 }

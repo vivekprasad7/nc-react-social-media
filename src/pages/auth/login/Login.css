@@ -1,10 +1,16 @@
 .login-page{
     display: flex;
+    flex-wrap: wrap;
     height: 100vh;
 }
 
+.auth-heading{
+    color:#fff;
+    letter-spacing: 2px;
+}
+
 .cat{
-    width:400px;
+    width:200px;
 }
 
 .slogan{
@@ -48,13 +54,33 @@
 }
 
 .input-field{
+    box-sizing: border-box;
     width:100%;
     border:solid 1px gray;
     border-radius: 20px;
-    padding:0.1rem;
+    padding:0.1rem 0.4rem;
 }
 
 .input-field input{
     width:90%;
     border:none;
+}
+
+.form-block-display a{
+    text-decoration: none;
+    color: orange;
+}
+
+@media (width < 768px){
+    .login-page{
+        flex-direction: column;
+        height: fit-content;
+        width: 100%;
+    }
+
+    .login-wp-container{
+        width:100%;
+    }
+
+    
 }

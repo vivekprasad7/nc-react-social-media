@@ -34,39 +34,40 @@ export const Login = () => {
   return (
     <div className='login-page'>
       <div className='login-wp-container'>
-      <div className="cat">
-    <Lottie animationData={fictionCat} />
-    </div>
-    <h3 className='slogan'><span className='white'>#Be</span>Real</h3>
+        <h1 className='auth-heading'>Login</h1>
+        {/* <div className="cat">
+          <Lottie animationData={fictionCat} />
+        </div>
+        <h3 className='slogan'><span className='white'>Be</span> Real.</h3> */}
 
       </div>
       <div className='login-form-container'>
 
         <form onSubmit={loginSubmitHandler} className='login-form'>
 
-          <h1 onClick={() => loginHandler(guestUserCreds)}>Login </h1>
+          {/* <h1 onClick={() => loginHandler(guestUserCreds)}>Login </h1> */}
 
 
           <div className='form-block-display'>
 
             <div className='form-unit'>
-            <label>Username: </label>
+              <label>Username: </label>
 
               <div className='input-field'>
-              <input
-                required
-                id="username"
-                placeholder='aryashah'
-                value={loginDetails.username}
-                name="username"
-                onChange={(e) => setLoginDetails({
-                  ...loginDetails,
-                  username: e.target.value,
-                })}
+                <input
+                  required
+                  id="username"
+                  placeholder='aryashah'
+                  value={loginDetails.username}
+                  name="username"
+                  onChange={(e) => setLoginDetails({
+                    ...loginDetails,
+                    username: e.target.value,
+                  })}
 
-              />
+                />
               </div>
-             
+
             </div>
           </div>
 
@@ -76,33 +77,33 @@ export const Login = () => {
               <label>Password: </label>
 
               <div className='input-field'>
-              <input
-                className='login-pwd-input'
-                type={isPasswordVisible ? "text" : "password"}
-                required
-                id="password"
-                placeholder={isPasswordVisible ? "password" : "********"}
-                value={loginDetails.password}
-                name="password"
-                onChange={(e) => setLoginDetails({
-                  ...loginDetails,
-                  password: e.target.value,
-                })}
-              />
-              {isPasswordVisible ? (
-                <i
-                  onClick={() => setIsPasswordVisible((prev) => !prev)}
-                  className="fa-regular fa-eye-slash pwd-eye"
-                ></i>
-              ) : (
-                <i
-                  onClick={() => setIsPasswordVisible((prev) => !prev)}
-                  className="fa-regular fa-eye pwd-eye"
-                ></i>
-              )}
+                <input
+                  className='login-pwd-input'
+                  type={isPasswordVisible ? "text" : "password"}
+                  required
+                  id="password"
+                  placeholder={isPasswordVisible ? "password" : "********"}
+                  value={loginDetails.password}
+                  name="password"
+                  onChange={(e) => setLoginDetails({
+                    ...loginDetails,
+                    password: e.target.value,
+                  })}
+                />
+                {isPasswordVisible ? (
+                  <i
+                    onClick={() => setIsPasswordVisible((prev) => !prev)}
+                    className="fa-regular fa-eye-slash pwd-eye"
+                  ></i>
+                ) : (
+                  <i
+                    onClick={() => setIsPasswordVisible((prev) => !prev)}
+                    className="fa-regular fa-eye pwd-eye"
+                  ></i>
+                )}
 
               </div>
-              
+
 
             </div>
           </div>
