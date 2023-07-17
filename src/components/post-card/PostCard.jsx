@@ -8,6 +8,7 @@ import { NewComment } from '../new-comment/NewComment'
 import { useNavigate } from 'react-router-dom'
 import { useUserContext } from '../../contexts/userContext'
 import { useEffect } from 'react'
+import { toast } from 'react-hot-toast'
 
 
 export const PostCard = ({postItem}) => {
@@ -43,6 +44,11 @@ export const PostCard = ({postItem}) => {
   }
 
   const isBookmarked = () => userState?.bookmarks?.find((postID) => postID === _id)
+
+  const copyLinkHandler = (link) => {
+    navigator.clipboard.writeText(link);
+    toast.success("Link successfully copied");
+  };
   
   return (
     <div  className='post-card'>
@@ -103,7 +109,7 @@ export const PostCard = ({postItem}) => {
 
                   }
                 </div>
-                <i class="fa fa-share"></i>
+                <i onClick={() => copyLinkHandler(`https://socialcardz.netlify.app//post/${_id}`)} class="fa fa-share"></i>
 
                 {
                   isBookmarked() ? (<div className='post-icon' onClick={() => removeBookmarkHandler(_id)}>

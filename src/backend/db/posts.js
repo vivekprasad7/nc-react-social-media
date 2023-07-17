@@ -19,7 +19,7 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        comment: "2 different socks, but same thing!!",
+        text: "2 different socks, but same thing!!",
         firstName: "Joey",
         lastName: "Tribbiani",
         username: "joey",
@@ -30,7 +30,7 @@ export const posts = [
       },
       {
         _id: uuid(),
-        comment: "So many things, I am confused!!",
+        text: "So many things, I am confused!!",
         firstName: "Phoebe",
         lastName: "Buffay",
         username: "phoebe",
@@ -84,7 +84,7 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        comment: "Eager to meet her!",
+        text: "Eager to meet her!",
         firstName: "Joey",
         lastName: "Tribbiani",
         username: "joey",
@@ -107,7 +107,7 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        comment: "Replaced 10,000 lines of code with one line. Table uda diya bc!",
+        text: "Replaced 10,000 lines of code with one line. Table uda diya bc!",
         firstName: "Joey",
         lastName: "Tribbiani",
         username: "joey",
@@ -147,7 +147,7 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        comment: "Hawwww!",
+        text: "Hawwww!",
         firstName: "Monica",
         lastName: "Geller",
         username: "monica",
@@ -184,7 +184,7 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        comment: "Deep Insight this!!",
+        text: "Deep Insight this!!",
         firstName: "Rachel",
         lastName: "Green",
         username: "rachel",
@@ -222,7 +222,7 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        comment: "Shut Up!",
+        text: "Shut Up!",
         firstName: "Arya",
         lastName: "Shah",
         username: "aryashah",
@@ -260,7 +260,7 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        comment: "Cute!",
+        text: "Cute!",
         firstName: "Ross",
         lastName: "Geller",
         username: "ross",
@@ -297,7 +297,7 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        comment: "Please die!",
+        text: "Please die!",
         firstName: "Joey",
         lastName: "Tribbiani",
         username: "joey",
@@ -334,7 +334,7 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        comment: "I can easily beat him in thumb wrestling!",
+        text: "I can easily beat him in thumb wrestling!",
         firstName: "Ross",
         lastName: "Geller",
         username: "ross",
@@ -371,7 +371,7 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        comment: "hehe",
+        text: "hehe",
         firstName: "Joey",
         lastName: "Tribbiani",
         username: "joey",
@@ -408,7 +408,7 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        comment: "Aww!",
+        text: "Aww!",
         firstName: "Joey",
         lastName: "Tribbiani",
         username: "joey",
@@ -445,7 +445,7 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        comment: "Hui Hui",
+        text: "Hui Hui",
         firstName: "Joey",
         lastName: "Tribbiani",
         username: "joey",
@@ -482,7 +482,7 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        comment: "Nahi!",
+        text: "Nahi!",
         firstName: "Joey",
         lastName: "Tribbiani",
         username: "joey",
@@ -519,7 +519,7 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        comment: "Beauty!",
+        text: "Beauty!",
         firstName: "Joey",
         lastName: "Tribbiani",
         username: "joey",
@@ -556,7 +556,7 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        comment: "Nice!",
+        text: "Nice!",
         firstName: "Joey",
         lastName: "Tribbiani",
         username: "joey",
