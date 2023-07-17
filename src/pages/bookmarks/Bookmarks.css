@@ -16,3 +16,13 @@
     height: 100vh;
     padding-top: 2rem;
 }
+
+@media (width < 768px){
+    .bookmarks-section{
+        width: 100vw;
+    }
+
+    .no-bookmarks{
+        width: 100vw;
+    }
+}

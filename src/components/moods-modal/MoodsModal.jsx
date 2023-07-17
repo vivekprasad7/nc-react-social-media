@@ -45,6 +45,8 @@ export const MoodsModal = ({showMoodModal, setShowMoodModal, userBio, setUserBio
 
                     </div>
 
+                    <div className='mood-btn-div'>
+
                     <button className='mood-btn'
                     onClick={() => {
                       if(mood?.length === 0){
@@ -56,6 +58,8 @@ export const MoodsModal = ({showMoodModal, setShowMoodModal, userBio, setUserBio
                     }}>
                       Save
                     </button>
+                    </div>
+
 
 
 

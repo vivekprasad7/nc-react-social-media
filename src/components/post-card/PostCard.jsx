@@ -109,7 +109,7 @@ export const PostCard = ({postItem}) => {
 
                   }
                 </div>
-                <i onClick={() => copyLinkHandler(`https://socialcardz.netlify.app//post/${_id}`)} class="fa fa-share"></i>
+                <i onClick={() => copyLinkHandler(`https://socialcardz.netlify.app/post/${_id}`)} class="fa fa-share"></i>
 
                 {
                   isBookmarked() ? (<div className='post-icon' onClick={() => removeBookmarkHandler(_id)}>

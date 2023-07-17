@@ -32,5 +32,11 @@
 }
 
 .mood-btn{
-    margin: auto;
+    margin: 1rem auto;
+}
+
+.mood-btn-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
