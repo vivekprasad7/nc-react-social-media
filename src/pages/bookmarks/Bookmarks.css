@@ -4,8 +4,15 @@
 
 .bookmarks-section{
     flex:0.45;
+    min-height: 100vh;
     height: max-content;
     background-color: #f3f3f3;
     border-left: solid 1px #f3f3f3;
     border-right: solid 1px #f3f3f3;
+}
+
+.no-bookmarks{
+    text-align: center;
+    height: 100vh;
+    padding-top: 2rem;
 }

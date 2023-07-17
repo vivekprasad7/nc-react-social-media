@@ -4,8 +4,11 @@
     background-color: #f3f3f3;
     border-left: solid 1px #f3f3f3;
     border-right: solid 1px #f3f3f3;
+    padding-bottom: 2rem;
 
 }
+
+
 
 .feed-top{
     display: flex;
@@ -73,4 +76,10 @@
 .nav-icon:hover  .nav-dropdown{
     display: block;
 
+}
+
+@media (width < 768px){
+    .feed{
+        width: 100%;
+    }
 }

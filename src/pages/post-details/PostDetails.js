@@ -57,6 +57,8 @@ export const PostDetails = () => {
                   {
                     postState?.post?.comments?.map((item) => {
 
+                      console.log("item", item)
+
                       return (
                         <div className='single-comment' key={item?._id}>
                           <hr></hr>
@@ -77,12 +79,12 @@ export const PostDetails = () => {
                               <i class="fa fa-circle"></i>
                             </div>
                             <div className='post-card-uname'>
-                              <p>Vivek Prasad</p>
-                              <small>@nxvivek</small>
+                              <p>{authState?.user?.firstName + " " + authState?.user?.lastName} </p>
+                              <small>@{item?.username}</small>
                             </div>
                           </div>
 
-                          {item?.text}
+                          {item?.comment}
 
 
                         </div>

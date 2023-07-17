@@ -6,6 +6,7 @@
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
+    padding:1rem;
 }
 
 .widgets_input{
@@ -15,7 +16,8 @@
     padding:15px;
     border-radius: 30px;
     margin-top:30px;
-    width: 80%;
+    margin-bottom: 20px;
+    width: 85%;
     justify-content: center;
     position: relative;
 }
@@ -40,4 +42,12 @@ input:focus {
 .widgets_searchIcon {
     color:gray;
     margin-right: 10px;
+}
+
+@media (width < 1024px) {
+    .widgets{
+        display: none;
+        background-color: red;
+
+    }
 }

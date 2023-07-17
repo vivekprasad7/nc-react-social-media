@@ -7,12 +7,14 @@ import { useUserContext } from "../../contexts/userContext";
 import { Loading } from "../../components/loader/loading";
 import { PostCard } from "../../components/post-card/PostCard";
 import { usePostContext } from "../../contexts/postContext";
+import { MobileMenu } from "../../components/mobile-menu/MobileMenu";
 
 export const Bookmarks = () => {
   const { userState, isLoading } = useUserContext();
   const { postState } = usePostContext();
   const navigate = useNavigate();
   return (
+    <>
     <div className="bookmarks-page">
       <Sidebar />
       <div className="bookmarks-section">
@@ -60,5 +62,9 @@ export const Bookmarks = () => {
       </div>
       <Widgets />
     </div>
+    <div>
+ <MobileMenu/>
+</div>
+    </>
   );
 };

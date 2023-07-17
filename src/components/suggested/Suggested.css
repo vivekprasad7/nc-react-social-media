@@ -1,10 +1,10 @@
 .suggested{
     background-color: #f3f3f3;
     background-color: #f7f9f9;
-    /* width:90%;
-    max-width: 380px; */
-    width:350px;
-    margin: 20px auto;
+
+    min-width:350px;
+    max-width: 370px;
+    margin: 0.3rem auto;
     /* width: 90%; */
     box-sizing: border-box;
     padding:20px;
@@ -83,4 +83,6 @@
     color:white;
     background-color: black;
     background-color: orange;
+    /* background-color: #ffcd4e; */
+    ;
 }

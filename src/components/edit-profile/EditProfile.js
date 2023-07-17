@@ -136,7 +136,7 @@ export const EditProfile = ({ userDetails, showEditBioModal, setShowEditBioModal
                         </div>
 
                         <div className='eb-submit-btn'>
-                            <input className='eb-submit-input' value="Save" type="submit"/>
+                            <button className='eb-submit-input' value="Save" type="submit">Submit</button>
                             {/* <button onClick={() => {
                             // editPostHandler(editPostInput?._id, editPostInput);
                             setShowEditBioModal(false);

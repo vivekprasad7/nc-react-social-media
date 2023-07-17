@@ -82,10 +82,14 @@ export const PostCard = ({postItem}) => {
            
              </div>
 
-            <div className='pc-content'>
-                <p onClick={() => navigate(`/post/${_id}`)}>{content}</p>
+            <div onClick={() => navigate(`/post/${_id}`)} className='pc-content'>
+                <p >{content}</p>
+                <div className='pc-media'>
                 <img src={postImg} alt={postAlt}/>
-                <small>{likes?.likeCount} Likes {comments?.length === undefined ? 0 : comments?.length} Comments</small>
+
+                </div>
+
+                <small>{likes?.likeCount} Likes • {comments?.length === undefined ? 0 : comments?.length} Comments</small>
             </div>
 
             {/* <hr></hr> */}
@@ -95,11 +99,11 @@ export const PostCard = ({postItem}) => {
                 <div onClick={likeToggle}>
                   {
                     isPostLikedByUser() ? <i style={{color:"red"}} class="fa-solid fa-heart "></i> :
-                    <i class="fa-solid fa-heart "></i>
+                    <i class="fa-regular fa-heart "></i>
 
                   }
                 </div>
-                <i class="fa-solid fa-share"></i>
+                <i class="fa fa-share"></i>
 
                 {
                   isBookmarked() ? (<div className='post-icon' onClick={() => removeBookmarkHandler(_id)}>

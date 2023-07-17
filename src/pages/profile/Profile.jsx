@@ -11,6 +11,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { useEffect } from 'react'
 import { PostCard } from '../../components/post-card/PostCard'
+import { MobileMenu } from '../../components/mobile-menu/MobileMenu'
 
 export const Profile = () => {
     const navigate = useNavigate();
@@ -52,6 +53,7 @@ export const Profile = () => {
 
 
   return (
+  <>
     <div className='profile-page'>
         <Sidebar/>
 
@@ -86,5 +88,10 @@ export const Profile = () => {
         
 
     </div>
+    <div>
+ <MobileMenu/>
+</div>
+
+    </>
   )
 }
