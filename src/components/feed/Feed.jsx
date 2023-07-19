@@ -30,7 +30,8 @@ export const Feed = ({pageTitle, showBackBtn, feedPosts, isLoading}) => {
             <i class="fa-solid fa-caret-down icon-circle"></i>
             <ul className='nav-dropdown'>
               <li onClick={() => postDispatch({type: "SORT_POSTS_BY", payload: "TRENDING"})} className='side-nav'>Trending</li>
-              <li onClick={() => postDispatch({type: "SORT_POSTS_BY", payload: "LATEST"})} className='side-nav'>  Latest</li>
+              <li onClick={() => postDispatch({type: "SORT_POSTS_BY", payload: "LATEST"})} className='side-nav'> Latest</li>
+              <li onClick={() => postDispatch({type: "SORT_POSTS_BY", payload: "OLDEST"})} className='side-nav'> Oldest</li>
             </ul>
                
             </div>

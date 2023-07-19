@@ -74,7 +74,7 @@ export const users = [
     password: "ross123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    profilePic:"https://randomuser.me/api/portraits/men/5.jpg",
+    profilePic:"https://randomuser.me/api/portraits/men/88.jpg",
     status:"Unagi Is A Total State Of Awareness.",
     website:"",
     followers:[],

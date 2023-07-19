@@ -51,6 +51,25 @@
     padding:1rem 0;
 }
 
+.new-post-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.new-post-image{
+    position: relative;
+    width:200px;
+    margin: 10px auto;
+}
+
+.np-close{
+    position: absolute;
+    top:2px;
+    right:5px;
+}
+
 .cp-links button{
     background-color: orange;
     color:white;
@@ -63,4 +82,19 @@
 
 button{
     font-family:Poppins, sans-serif;
+}
+
+.cp-icons{
+    display: flex;
+    gap:1rem;
+}
+
+.emoji-picker{
+    width: 500px;
+    margin: 0 auto;
+    z-index: 9999999;
+    position: absolute;
+    top: 30px;  
+    right: 0;
+    left: 0;
 }

@@ -18,7 +18,7 @@ export const Signup = () => {
     email: "",
     username: "",
     password: "",
-    avatarImg: ""
+    profilePic: "https://randomuser.me/api/portraits/men/45.jpg",
   })
 
   const signupSubmitHandler = (e) => {

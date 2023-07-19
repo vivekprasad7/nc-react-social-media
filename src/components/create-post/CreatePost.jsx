@@ -3,6 +3,8 @@ import "./CreatePost.css"
 import { useAuthContext } from '../../contexts/authContext'
 import { useState } from 'react';
 import { usePostContext } from '../../contexts/postContext';
+import data from "@emoji-mart/data";
+import EmojiPicker from '@emoji-mart/react';
 
 
 export const CreatePost = () => {
@@ -16,7 +18,7 @@ export const CreatePost = () => {
 
     const [newPostInput, setNewPostInput] = useState(initialNewPostData);
     const [media, setMedia] = useState(null);
-    const [emoji, setEmoji] = useState(false);
+    const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
   return (
     <div className='create-post' style={{display: displayProps ? "block" : "none"}}>
@@ -42,15 +44,17 @@ export const CreatePost = () => {
         </textarea>
         </div>
 
-        {
-          media && <div>
 
-          <i onClick={() => {setMedia(null); setNewPostInput({...newPostInput, postImg:""})}} class="fa-solid fa-close icon-circle"></i>
+
+        {
+          media && <div className='new-post-img'>
+
+          <i onClick={() => {setMedia(null); setNewPostInput({...newPostInput, postImg:""})}} class="fa-solid fa-close icon-circle np-close"></i>
 
           <img 
           src={URL.createObjectURL(media)}
           alt="view"
-          className='new-post-img'
+          className='new-post-image'
           />
 
           </div>
@@ -58,7 +62,38 @@ export const CreatePost = () => {
 
         <div className='cp-links'>
 
-          <div>
+          <div className='cp-icons'>
+            
+          <div style={{position:"relative"}}>
+            <label onClick={() => setShowEmojiPicker(!showEmojiPicker) } >
+            <i className="fa-regular fa-face-smile"></i>
+            </label>
+
+            {
+              showEmojiPicker && (
+                <div className='emoji-picker' onClick={() => setShowEmojiPicker(true)}>
+                   <EmojiPicker
+                    data={data}
+                    maxFrequentRows={0}
+                    previewPosition="none"
+                    emojiButtonSize={28}
+                    emojiSize={20}
+                    onEmojiSelect={(emoji) => {
+                      setNewPostInput({
+                        ...newPostInput,
+                        content: newPostInput.content + emoji.native,
+                      });
+                    }}
+                    />
+
+                </div>
+              )
+            }
+            </div>
+
+           
+
+          <div className='cp-icons'>
             <label>
             <i className="fa-regular fa-image"></i>
             <input
@@ -75,6 +110,13 @@ export const CreatePost = () => {
             </label>
 
           </div>
+
+          </div>
+
+
+        
+
+
             <button onClick={()=> {
               createNewPost(newPostInput);
               setNewPostInput(initialNewPostData);
