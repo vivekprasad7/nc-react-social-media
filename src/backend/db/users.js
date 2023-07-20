@@ -135,7 +135,7 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     profilePic:"https://res.cloudinary.com/darl8idou/image/upload/v1688972177/Cardz/pp1_exknth.png",
-    status:"Sab se peeche hum khade",
+    status:"Someday we're gonna dance with those lions",
     website:"",
     followers:[],
     following:[],
