@@ -42,7 +42,7 @@
 .App{
   overflow: hidden;
   color: var(--black);
-  max-width: 1450px;
+  /* max-width: 1450px; */
   margin-left: auto;
   margin-right: auto;
   /* background: #f3f3f3; */

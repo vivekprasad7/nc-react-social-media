@@ -8,6 +8,13 @@ export const Sidebar = () => {
   const{displayProps, setDisplayProps} = useAuthContext();
   const {authState} = useAuthContext();
   const navigate = useNavigate();
+
+  const navStyles = ({isActive}) => ({
+    backgroundColor: isActive ? "rgb(255, 238, 219)" : "",
+    borderRadius: isActive ? "30px" : "",
+  })
+
+  
   return (
     <div className='sidebar'>
 
@@ -24,6 +31,7 @@ export const Sidebar = () => {
           <span className="nav-title">Home</span>
         </NavLink>
         <NavLink
+          style={navStyles}
           className="side-nav"
           to="/explore"
         >
@@ -31,6 +39,7 @@ export const Sidebar = () => {
           <span className="nav-title">Explore</span>
         </NavLink>
         <NavLink
+          style={navStyles}
           className="side-nav"
           to="/bookmarks"
         >
@@ -42,6 +51,7 @@ export const Sidebar = () => {
           </span>
         </NavLink>
         <NavLink
+          style={navStyles}
           className="side-nav"
           to={`/profile/${authState?.user?.username}`}
         >

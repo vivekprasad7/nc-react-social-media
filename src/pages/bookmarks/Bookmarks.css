@@ -1,5 +1,7 @@
 .bookmarks-page{
     display: flex;
+    max-width: 1450px;
+    margin:auto;
 }
 
 .bookmarks-section{

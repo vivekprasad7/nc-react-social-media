@@ -1,5 +1,7 @@
 .post-details-page{
     display:flex;
+    max-width: 1450px;
+    margin: auto;
 }
 
 .post-details-section{
